@@ -46,7 +46,7 @@ fi
 # 复制构建产物
 echo "📋 复制构建产物..."
 cp -r out/* ./
-rm -rf out
+
 
 # 创建.gitignore
 echo "node_modules/" > .gitignore

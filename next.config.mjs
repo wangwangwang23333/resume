@@ -14,7 +14,11 @@ const nextConfig = {
 let config = nextConfig;
 try {
   const { withGeist } = await import('geist');
-  config = withGeist(nextConfig);
+  config = withGeist({
+    ...nextConfig,
+    basePath: '/resume',
+    assetPrefix: '/resume',
+  });
 } catch (error) {
   console.warn('Geist 字体库未正确安装，跳过字体优化配置');
 }
