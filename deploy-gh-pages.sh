@@ -41,10 +41,7 @@ else
     git checkout --orphan dist
 fi
 
-# 清理dist分支内容
-echo "🧹 清理旧文件..."
-git rm -rf . || true
-rm -rf .next node_modules .gitignore *.json *.mjs *.ts *.md
+
 
 # 复制构建产物
 echo "📋 复制构建产物..."
