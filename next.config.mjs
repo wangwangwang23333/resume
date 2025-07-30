@@ -6,7 +6,7 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: process.env.NODE_ENV === 'production' ? '/resume' : '',
-  assetPrefix: '/resume/',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/resume/' : '',
 };
 
 // 检查 geist 是否可用，如果不可用则跳过
