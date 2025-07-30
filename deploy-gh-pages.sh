@@ -18,14 +18,14 @@ if [ "$current_branch" != "main" ] && [ "$current_branch" != "master" ]; then
     fi
 fi
 
-git add .
-git commit -m "update resume"
-git push origin main
+
 
 # 检查是否有未提交的更改
 if ! git diff-index --quiet HEAD --; then
     echo "⚠️  有未提交的更改，请先提交或暂存这些更改"
-    exit 1
+    git add .
+    git commit -m "update resume"
+    git push origin main
 fi
 
 # 安装依赖
