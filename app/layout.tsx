@@ -6,7 +6,6 @@ import './globals.css'
 export const metadata: Metadata = {
   title: '汪明杰的个人简历',
   description: '用ai工具快速搭建的网站',
-  generator: 'ai',
 }
 
 export default function RootLayout({
@@ -15,17 +14,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <style>{`
-html {
-  font-family: ${GeistSans.style.fontFamily};
-  --font-sans: ${GeistSans.variable};
-  --font-mono: ${GeistMono.variable};
-}
-        `}</style>
-      </head>
-      <body>{children}</body>
+    <html lang="zh" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className={GeistSans.className}>{children}</body>
     </html>
   )
 }
