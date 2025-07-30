@@ -18,7 +18,7 @@ if [ "$current_branch" != "main" ] && [ "$current_branch" != "master" ]; then
     fi
 fi
 
-
+git push origin `git subtree split --prefix out HEAD`:dist --force
 
 # 检查是否有未提交的更改
 if ! git diff-index --quiet HEAD --; then
