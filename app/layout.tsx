@@ -4,9 +4,9 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  title: '汪明杰的个人简历',
+  description: '用ai工具快速搭建的网站',
+  generator: 'ai',
 }
 
 export default function RootLayout({

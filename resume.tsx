@@ -14,6 +14,10 @@ import {
   Calendar,
   Building2,
   Star,
+  Target,
+  Clock,
+  BarChart3,
+  TrendingUp,
 } from "lucide-react"
 
 export default function Resume() {
@@ -147,6 +151,137 @@ export default function Resume() {
                 </div>
               </CardContent>
             </Card>
+
+            {/* 教育背景下方添加动态内容 */}
+
+
+            {/* 技能雷达图 - 改为真正的雷达图 */}
+            <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg p-2">
+              <h4 className="font-semibold text-purple-800 mb-2 flex items-center gap-2">
+                <Target className="w-4 h-4" />
+                技能雷达
+              </h4>
+              <div className="flex justify-center">
+                <svg width="180" height="180" viewBox="0 0 200 200" className="w-44 h-44">
+                  {/* 背景网格 */}
+                  <g stroke="#e5e7eb" strokeWidth="1">
+                    <polygon points="100,20 150,60 150,140 100,180 50,140 50,60" fill="none" />
+                    <polygon points="100,40 135,70 135,130 100,160 65,130 65,70" fill="none" />
+                    <polygon points="100,60 120,80 120,120 100,140 80,120 80,80" fill="none" />
+                    <polygon points="100,80 110,90 110,110 100,120 90,110 90,90" fill="none" />
+                  </g>
+                  
+                  {/* 轴线 */}
+                  <g stroke="#d1d5db" strokeWidth="1">
+                    <line x1="100" y1="20" x2="100" y2="180" />
+                    <line x1="50" y1="60" x2="150" y2="140" />
+                    <line x1="50" y1="140" x2="150" y2="60" />
+                    <line x1="20" y1="100" x2="180" y2="100" />
+                    <line x1="60" y1="50" x2="140" y2="150" />
+                    <line x1="60" y1="150" x2="140" y2="50" />
+                  </g>
+                  
+                  {/* 技能标签 */}
+                  <g fontSize="11" fill="#6b7280">
+                    <text x="100" y="15" textAnchor="middle" className="font-medium">后端开发</text>
+                    <text x="160" y="65" textAnchor="start" className="font-medium">系统设计</text>
+                    <text x="160" y="135" textAnchor="start" className="font-medium">云原生</text>
+                    <text x="100" y="195" textAnchor="middle" className="font-medium">算法优化</text>
+                    <text x="40" y="135" textAnchor="end" className="font-medium">DevOps</text>
+                    <text x="40" y="65" textAnchor="end" className="font-medium">架构设计</text>
+                  </g>
+                  
+                  {/* 数据多边形 */}
+                  <polygon 
+                    points="100,35 145,55 135,125 100,165 55,125 65,55" 
+                    fill="#8b5cf6" 
+                    fillOpacity="0.3" 
+                    stroke="#8b5cf6" 
+                    strokeWidth="2"
+                  />
+                  
+                  {/* 数据点 */}
+                  <g fill="#8b5cf6">
+                    <circle cx="100" cy="35" r="3" />
+                    <circle cx="145" cy="55" r="3" />
+                    <circle cx="135" cy="125" r="3" />
+                    <circle cx="100" cy="165" r="3" />
+                    <circle cx="55" cy="125" r="3" />
+                    <circle cx="65" cy="55" r="3" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            {/* 技术影响力统计 */}
+            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-lg p-4">
+              <h4 className="font-semibold text-cyan-800 mb-3 flex items-center gap-2">
+                <TrendingUp className="w-4 h-4" />
+                技术影响力
+              </h4>
+              <div className="grid grid-cols-2 gap-3 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-cyan-600">50+</div>
+                  <div className="text-xs text-gray-600">代码审查</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-cyan-600">5+</div>
+                  <div className="text-xs text-gray-600">技术分享</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-cyan-600">100+</div>
+                  <div className="text-xs text-gray-600">Leetcode</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-cyan-600">80+</div>
+                  <div className="text-xs text-gray-600">问题解决</div>
+                </div>
+              </div>
+            </div>
+
+            {/* 滚动装饰元素 - 修复定位方式 */}
+            <div className="mt-auto pt-8 pb-4">
+              <div className="flex justify-center">
+                <div className="bg-gray-900 rounded-lg p-3 shadow-lg border border-gray-700">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  </div>
+                  <div className="font-mono text-xs text-green-400">
+                    <div className="flex">
+                      <span className="text-gray-500 mr-2">1</span>
+                      <span>const developer = {'{'}</span>
+                    </div>
+                    <div className="flex">
+                      <span className="text-gray-500 mr-2">2</span>
+                      <span className="ml-4">name: 'Wang Mingjie',</span>
+                    </div>
+                    <div className="flex">
+                      <span className="text-gray-500 mr-2">3</span>
+                      <span className="ml-4">role: 'Backend Engineer',</span>
+                    </div>
+                    <div className="flex">
+                      <span className="text-gray-500 mr-2">4</span>
+                      <span className="ml-4">coffee: '∞',</span>
+                    </div>
+                    <div className="flex">
+                      <span className="text-gray-500 mr-2">5</span>
+                      <span className="ml-4">bugs: 0,</span>
+                    </div>
+                    <div className="flex">
+                      <span className="text-gray-500 mr-2">6</span>
+                      <span>{'}'}</span>
+                    </div>
+                    <div className="flex mt-1">
+                      <span className="text-gray-500 mr-2">7</span>
+                      <span className="text-blue-400">// keep scrolling...</span>
+                      <span className="animate-pulse">_</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Content */}
@@ -184,20 +319,39 @@ export default function Resume() {
                         </div>
 
                         <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 mb-4">
-                          <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+                          <h4 className="font-semibold text-green-800 mb-4 flex items-center gap-2">
                             <Star className="w-4 h-4" />
                             核心成就
                           </h4>
-                          <div className="grid md:grid-cols-2 gap-4 text-sm">
-                            <div className="bg-white rounded-lg p-3 border border-green-200">
-                              <div className="font-semibold text-green-700">性能提升</div>
-                              <div className="text-2xl font-bold text-green-600">30%</div>
-                              <div className="text-xs text-gray-600">备份效率提升</div>
+                          <div className="grid md:grid-cols-4 gap-4">
+                            {/* 左边大数字 */}
+                            <div className="bg-white rounded-lg p-6 border border-green-200 flex flex-col items-center justify-center text-center">
+                              <div className="text-4xl font-bold text-green-600 mb-1">3</div>
+                              <div className="font-semibold text-green-700 text-sm">项发明专利</div>
                             </div>
-                            <div className="bg-white rounded-lg p-3 border border-green-200">
-                              <div className="font-semibold text-green-700">专利申请</div>
-                              <div className="text-2xl font-bold text-green-600">2项</div>
-                              <div className="text-xs text-gray-600">发明专利</div>
+                            
+                            {/* 右边三项专利并排 */}
+                            <div className="md:col-span-3 grid md:grid-cols-3 gap-3">
+                              <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
+                                <div className="font-semibold text-green-700 text-sm mb-2">基于内存数据流的ETCD快照实时备份</div>
+                                <div className="text-xs text-gray-600 leading-relaxed">
+                                  实现边生成边上传的流式备份方案，提升备份效率30%
+                                </div>
+                              </div>
+                              
+                              <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
+                                <div className="font-semibold text-green-700 text-sm mb-2">Zookeeper逻辑备份</div>
+                                <div className="text-xs text-gray-600 leading-relaxed">
+                                  基于逻辑备份的Zookeeper流式备份方案，实现数据备份的自动化
+                                </div>
+                              </div>
+                              
+                              <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
+                                <div className="font-semibold text-green-700 text-sm mb-2">多层校验的文件完整性保障</div>
+                                <div className="text-xs text-gray-600 leading-relaxed">
+                                  基于分段ETag与二级校验算法的双重校验机制，确保数据文件的完整性
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -499,7 +653,7 @@ export default function Resume() {
                     <div className="mb-4 flex justify-center">
                       <div className="w-48 h-32 bg-white rounded-lg border-2 border-orange-200 flex items-center justify-center overflow-hidden">
                         <img
-                          src="https://test-1301780692.cos.ap-guangzhou.myqcloud.com/%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%85%A7%E7%89%87.png?q-sign-algorithm=sha1&q-ak=AKID7GlsTOCg9VswWW42VhigiR8oeMSHpcDSrAx3w_JOxGYiVs7YNVtDILB-StMFeYu4&q-sign-time=1753869261;1753872861&q-key-time=1753869261;1753872861&q-header-list=host&q-url-param-list=ci-process&q-signature=fe9ecb66417b4fb8df439b6465fe6a5f9a11513e&x-cos-security-token=W0bXZUQAcBAwBu8st4fKKSgfext123Ga4668fa61117674ca6321963f5a32d306uAT1059KAgf1j34WddvzkxYQJmRhbzl_vHpfDl7lpHOtTxLS3ghrQlIyk0yuVLAglXxZlRSC7UB26apbR2WhhSP7ebvmE1gK_SvMG2aMl1wj0NqYJYzZHz9KxjrDhJME4nSRjDYyQuu8XWFg7RZimN8i8dmji_9aRdZInKxbtfUQxGoBfPbeqzrqpY2GU53E1-8a6X9KiFTOLETR3mAm3hIyGYTGGONlNu3-dkytly3j9vvilgKu_kiiE0vsFEVmOUGTGMR1kguQJ9nleltebQ&ci-process=originImage"
+                          src="https://test-1301780692.cos.ap-guangzhou.myqcloud.com/%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%85%A7%E7%89%87.png"
                           alt="梦想教室照片"
                           className="w-full h-full object-cover rounded-lg"
                         />
@@ -534,7 +688,7 @@ export default function Resume() {
                       <div className="mb-4 flex justify-center">
                         <div className="w-40 h-28 bg-white rounded-lg border-2 border-green-200 flex items-center justify-center overflow-hidden">
                           <img
-                            src="https://test-1301780692.cos.ap-guangzhou.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250730180148_7.jpg?q-sign-algorithm=sha1&q-ak=AKID-NltXjKE6OtpksuHoyWEp3mgIlgwaFt1eySs-AXGte95SGJd9Aq31D1axk4kF4mx&q-sign-time=1753869912;1753873512&q-key-time=1753869912;1753873512&q-header-list=host&q-url-param-list=ci-process&q-signature=f7a0817b285b0c7e8dd0dff9dd962e2967cb2798&x-cos-security-token=W0bXZUQAcBAwBu8st4fKKSgfext123Gadf70ec277d51160611030aaa6354454auAT1059KAgf1j34Wddvzkw-VbESCw6DGShP64E47_QL2BNMRl1omp2IMi5YYdZrKVK-kNbg3u0LO2JZltndeLByD-DhDCXnU_p2LAX7Dk7k5jLpxYfIMIODxi10rsuCa-B0U1QnhD_HR8EqbJ_p3pQBNn2yx56g0j8pn2CwtqHmsVhlpWKtCZMKTW9ZDxoxeHaca8QF7l4A1ptXI_tqhbm15M3BJd5EYHtrJHYBJF1_Es-SuLoLtMlSJ4Aayen8pyApgJJ18EVizXTPT0hNQVQ&ci-process=originImage"
+                            src="https://test-1301780692.cos.ap-guangzhou.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250730180148_7.jpg"
                             alt="支教活动照片"
                             className="w-full h-full object-cover rounded-lg"
                           />
