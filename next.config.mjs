@@ -5,8 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '',
-  assetPrefix: '',
+  basePath: '/resume',
+  assetPrefix: '/resume',
   distDir: 'out',
 };
 
