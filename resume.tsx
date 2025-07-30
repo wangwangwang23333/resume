@@ -98,6 +98,12 @@ export default function Resume() {
                     <p className="text-sm text-gray-600">熟练使用 MySQL 与 Redis，具备慢查询优化、索引调优等经验</p>
                   </div>
                   <div>
+                    <h4 className="font-semibold mb-2 text-gray-800">框架</h4>
+                    <p className="text-sm text-gray-600">
+                    熟悉 Vue.js 、Spring Boot 等主流开发框架
+                    </p>
+                  </div>
+                  <div>
                     <h4 className="font-semibold mb-2 text-gray-800">工具</h4>
                     <p className="text-sm text-gray-600">熟悉 Git、Maven、Docker 等项目管理及构建工具</p>
                   </div>
@@ -107,6 +113,7 @@ export default function Resume() {
                       具备良好的中英文沟通及协调能力，快速适应新环境，高效学习新技术栈并参与开发
                     </p>
                   </div>
+                 
                 </div>
               </CardContent>
             </Card>
@@ -255,7 +262,7 @@ export default function Resume() {
                     </div>
                     <div className="flex">
                       <span className="text-gray-500 mr-2">2</span>
-                      <span className="ml-4">name: 'Wang Mingjie',</span>
+                      <span className="ml-4">name: 'Mingjie Wang',</span>
                     </div>
                     <div className="flex">
                       <span className="text-gray-500 mr-2">3</span>
@@ -333,21 +340,21 @@ export default function Resume() {
                             {/* 右边三项专利并排 */}
                             <div className="md:col-span-3 grid md:grid-cols-3 gap-3">
                               <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
-                                <div className="font-semibold text-green-700 text-sm mb-2">基于内存数据流的ETCD快照实时备份</div>
+                                <div className="font-semibold text-green-700 text-sm mb-2">基于内存数据流的ETCD快照备份方法</div>
                                 <div className="text-xs text-gray-600 leading-relaxed">
-                                  实现边生成边上传的流式备份方案，提升备份效率30%
+                                  实现边生成边上传的流式备份方案，<b>提升备份效率30%</b>
                                 </div>
                               </div>
                               
                               <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
-                                <div className="font-semibold text-green-700 text-sm mb-2">Zookeeper逻辑备份</div>
+                                <div className="font-semibold text-green-700 text-sm mb-2">Zookeeper的逻辑备份及恢复方法</div>
                                 <div className="text-xs text-gray-600 leading-relaxed">
-                                  基于逻辑备份的Zookeeper流式备份方案，实现数据备份的自动化
+                                  基于逻辑备份的Zookeeper流式备份与恢复方案，实现数据备份的自动化
                                 </div>
                               </div>
                               
                               <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
-                                <div className="font-semibold text-green-700 text-sm mb-2">多层校验的文件完整性保障</div>
+                                <div className="font-semibold text-green-700 text-sm mb-2">多层校验的文件完整性保障方法</div>
                                 <div className="text-xs text-gray-600 leading-relaxed">
                                   基于分段ETag与二级校验算法的双重校验机制，确保数据文件的完整性
                                 </div>
@@ -568,14 +575,14 @@ export default function Resume() {
               <CardHeader className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white">
                 <CardTitle className="flex items-center gap-2 text-xl">
                   <Award className="w-6 h-6" />
-                  学术成果
+                  科研成果
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-200">
                   <h4 className="font-bold mb-4 text-yellow-800 flex items-center gap-2">
                     <Award className="w-5 h-5" />
-                    学术论文发表
+                    论文发表
                   </h4>
                   <div className="space-y-4">
                     <div className="bg-white rounded-lg p-4 border border-yellow-200">
