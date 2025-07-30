@@ -321,7 +321,7 @@ export default function Resume() {
                         <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 mb-4">
                           <h4 className="font-semibold text-green-800 mb-4 flex items-center gap-2">
                             <Star className="w-4 h-4" />
-                            核心成就
+                            核心成果
                           </h4>
                           <div className="grid md:grid-cols-4 gap-4">
                             {/* 左边大数字 */}
@@ -586,8 +586,7 @@ export default function Resume() {
                       <div className="flex items-center gap-2 mb-2">
                         <Badge className="bg-yellow-100 text-yellow-800">CSCWD 2024</Badge>
                         <Badge variant="outline">IEEE国际学术会议</Badge>
-                      </div>
-                      <a
+                        <a
                         href="https://ieeexplore.ieee.org/abstract/document/10580253"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -595,6 +594,8 @@ export default function Resume() {
                       >
                         查看论文 <ExternalLink className="w-3 h-3" />
                       </a>
+                      </div>
+                      
                     </div>
                     <div className="bg-white rounded-lg p-4 border border-yellow-200">
                       <p className="font-semibold text-gray-800 mb-2">
@@ -604,8 +605,7 @@ export default function Resume() {
                       <div className="flex items-center gap-2 mb-2">
                         <Badge className="bg-yellow-100 text-yellow-800">IEEE SMC 2024</Badge>
                         <Badge variant="outline">CCF推荐国际学术会议</Badge>
-                      </div>
-                      <a
+                        <a
                         href="https://ieeexplore.ieee.org/abstract/document/10831572"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -613,6 +613,8 @@ export default function Resume() {
                       >
                         查看论文 <ExternalLink className="w-3 h-3" />
                       </a>
+                      </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -624,8 +626,7 @@ export default function Resume() {
                   </h4>
                   <div className="bg-white rounded-lg p-4 border border-purple-200">
                     <p className="font-semibold text-gray-800 mb-2">
-                      A Novel Request-Invitation-Approval Scheme for Flexible Semantic Conflict Prevention in Real-Time
-                      Collaborative Programming
+                      一种语义冲突预防方法
                     </p>
                     <p className="text-sm text-gray-600">
                       针对实时协同编程中语义冲突问题，采用申请-审批等机制平衡实时协同编程自由度和冲突预防之间的关系。
