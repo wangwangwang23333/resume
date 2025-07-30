@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  assetPrefix: '/resume/'
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/resume/' : '',
 }
 
 module.exports = nextConfig
