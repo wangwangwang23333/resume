@@ -22,8 +22,12 @@ import {
 
 export default function Resume() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 animate-in fade-in duration-1000">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-100 to-indigo-200">
+      {/* 毛玻璃背景层 - 更明显的模糊效果 */}
+      <div className="fixed inset-0 bg-white/30 backdrop-blur-lg -z-10"></div>
+      
+      {/* 内容容器 */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Sidebar */}
           <div className="lg:col-span-1 space-y-6">
@@ -246,45 +250,47 @@ export default function Resume() {
               </div>
             </div>
 
-            {/* 滚动装饰元素 - 修复定位方式 */}
-            <div className="mt-auto pt-8 pb-4">
-              <div className="flex justify-center">
-                <div className="bg-gray-900 rounded-lg p-3 shadow-lg border border-gray-700">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            {/* 滚动装饰元素 - 从上往下粘贴效果 */}
+            <div className="sticky top-4 z-40 mt-8">
+              <div className="bg-gray-900 rounded-lg p-3 shadow-lg border border-gray-700">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div className="font-mono text-xs text-green-400">
+                  <div className="flex">
+                    <span className="text-gray-500 mr-2">1</span>
+                    <span>const developer = {'{'}</span>
                   </div>
-                  <div className="font-mono text-xs text-green-400">
-                    <div className="flex">
-                      <span className="text-gray-500 mr-2">1</span>
-                      <span>const developer = {'{'}</span>
-                    </div>
-                    <div className="flex">
-                      <span className="text-gray-500 mr-2">2</span>
-                      <span className="ml-4">name: 'Mingjie Wang',</span>
-                    </div>
-                    <div className="flex">
-                      <span className="text-gray-500 mr-2">3</span>
-                      <span className="ml-4">role: 'Backend Engineer',</span>
-                    </div>
-                    <div className="flex">
-                      <span className="text-gray-500 mr-2">4</span>
-                      <span className="ml-4">coffee: '∞',</span>
-                    </div>
-                    <div className="flex">
-                      <span className="text-gray-500 mr-2">5</span>
-                      <span className="ml-4">bugs: 0,</span>
-                    </div>
-                    <div className="flex">
-                      <span className="text-gray-500 mr-2">6</span>
-                      <span>{'}'}</span>
-                    </div>
-                    <div className="flex mt-1">
-                      <span className="text-gray-500 mr-2">7</span>
-                      <span className="text-blue-400">// keep scrolling...</span>
-                      <span className="animate-pulse">_</span>
-                    </div>
+                  <div className="flex">
+                    <span className="text-gray-500 mr-2">2</span>
+                    <span className="ml-4">name: 'Mingjie Wang',</span>
+                  </div>
+                  <div className="flex">
+                    <span className="text-gray-500 mr-2">3</span>
+                    <span className="ml-4">role: 'Backend Engineer',</span>
+                  </div>
+                  <div className="flex">
+                    <span className="text-gray-500 mr-2">4</span>
+                    <span className="ml-4">skill: '++',</span>
+                  </div>
+                  <div className="flex">
+                    <span className="text-gray-500 mr-2">5</span>
+                    <span className="ml-4">bugs: 0,</span>
+                  </div>
+                                    <div className="flex">
+                    <span className="text-gray-500 mr-2">6</span>
+                    <span className="ml-4">future: '∞',</span>
+                  </div>
+                  <div className="flex">
+                    <span className="text-gray-500 mr-2">7</span>
+                    <span>{'}'}</span>
+                  </div>
+                  <div className="flex mt-1">
+                    <span className="text-gray-500 mr-2">8</span>
+                    <span className="text-blue-400">// keep scrolling...</span>
+                    <span className="animate-pulse">_</span>
                   </div>
                 </div>
               </div>
