@@ -676,19 +676,61 @@ export default function Resume() {
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
                         <div>
-                          利用专业知识设计"与AI对话"课程，为孩子们拍照并了解理想职业后，通过AI生成未来职业照，激发他们的职业想象
+                          利用专业知识设计"与AI对话"课程，为孩子们拍照并了解理想职业后，通过AI生成未来职业照，激发职业想象；课外引导学生动手操作并控制无人机
                         </div>
                       </li>
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>课外引导学生动手操作并控制无人机</div>
+                        <div>个人荣获
+                          <span className="bg-orange-100 px-2 py-1 rounded font-semibold">
+                              市级优秀大学生志愿者
+                            </span>
+                          
+                          </div>
                       </li>
                     </ul>
                   </div>
 
-                  {/* 春雨支教社团和研究生班班长 - 同一行 */}
+                  {/* 春雨支教社团和研究生班班长 - 重新布局为左侧垂直叠放 */}
                   <div className="grid md:grid-cols-2 gap-6">
-                    {/* 春雨支教社团 */}
+                    {/* 左侧垂直叠放的两个卡片 */}
+                    <div className="space-y-6">
+                      {/* 研究生班班长 - 在上 */}
+                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
+                        <h4 className="font-bold mb-3 text-blue-800">研究生班班长 (2023年至今)</h4>
+                        <p className="text-sm text-gray-700 mb-4">
+                          担任软件工程研究生班班长，负责班级日常事务管理和同学间的沟通协调工作
+                        </p>
+
+                        <div className="space-y-2 text-sm text-gray-700">
+                          <div className="flex gap-3">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div>组织班级学术交流活动和团建活动</div>
+                          </div>
+                          <div className="flex gap-3">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div>建立班级信息共享平台，提高信息传达效率</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 院学生会组长 - 在下 */}
+                      <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
+                        <h4 className="font-bold mb-3 text-purple-800">院学生会组长 (2024-2025年)</h4>
+                        <p className="text-sm text-gray-700 mb-4">
+                          担任学院学生会学风建设组组长，组织博思论坛等活动
+                        </p>
+
+                        {/* <div className="space-y-2 text-sm text-gray-700">
+                          <div className="flex gap-3">
+                            <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div>策划组织学院迎新晚会、学术讲座等大型活动</div>
+                          </div>
+                        </div> */}
+                      </div>
+                    </div>
+
+                    {/* 右侧单个卡片 - 春雨支教社团 */}
                     <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200">
                       <h4 className="font-bold mb-3 text-green-800">春雨支教社团社长 (2019-2020年)</h4>
 
@@ -725,29 +767,6 @@ export default function Resume() {
                           </div>
                         </li>
                       </ul>
-                    </div>
-
-                    {/* 研究生班班长 - 无照片 */}
-                    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
-                      <h4 className="font-bold mb-3 text-blue-800">研究生班班长 (2023年至今)</h4>
-                      <p className="text-sm text-gray-700 mb-4">
-                        担任软件工程研究生班班长，负责班级日常事务管理和同学间的沟通协调工作
-                      </p>
-
-                      <div className="space-y-2 text-sm text-gray-700">
-                        <div className="flex gap-3">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <div>组织班级学术交流活动和团建活动</div>
-                        </div>
-                        <div className="flex gap-3">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <div>协助导师处理班级事务，促进师生沟通</div>
-                        </div>
-                        <div className="flex gap-3">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <div>建立班级信息共享平台，提高信息传达效率</div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
