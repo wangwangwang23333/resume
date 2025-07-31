@@ -83,45 +83,7 @@ export default function Resume() {
               </CardContent>
             </Card>
 
-            {/* Skills Card */}
-            <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardHeader className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-t-lg">
-                <CardTitle className="flex items-center gap-2">
-                  <Code className="w-5 h-5" />
-                  个人技能
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">Java基础</h4>
-                    <p className="text-sm text-gray-600">熟悉 Java 基础知识，熟悉多线程并发，熟悉 JVM 内存模型</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">数据库</h4>
-                    <p className="text-sm text-gray-600">熟练使用 MySQL 与 Redis，具备慢查询优化、索引调优等经验</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">框架</h4>
-                    <p className="text-sm text-gray-600">
-                    熟悉 Vue.js 、Spring Boot 等主流开发框架
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">工具</h4>
-                    <p className="text-sm text-gray-600">熟悉 Git、Maven、Docker 等项目管理及构建工具</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">协作</h4>
-                    <p className="text-sm text-gray-600">
-                      具备良好的中英文沟通及协调能力，快速适应新环境，高效学习新技术栈并参与开发
-                    </p>
-                  </div>
-                 
-                </div>
-              </CardContent>
-            </Card>
-
+          
             {/* Education Card */}
             <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader className="bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-t-lg">
@@ -162,6 +124,46 @@ export default function Resume() {
                 </div>
               </CardContent>
             </Card>
+
+              {/* Skills Card */}
+              <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <CardHeader className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-t-lg">
+                <CardTitle className="flex items-center gap-2">
+                  <Code className="w-5 h-5" />
+                  个人技能
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold mb-2 text-gray-800">Java基础</h4>
+                    <p className="text-sm text-gray-600">熟悉 Java 基础知识，熟悉多线程并发，熟悉 JVM 内存模型</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2 text-gray-800">数据库</h4>
+                    <p className="text-sm text-gray-600">熟练使用 MySQL 与 Redis，具备慢查询优化、索引调优等经验</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2 text-gray-800">框架</h4>
+                    <p className="text-sm text-gray-600">
+                    熟悉 Vue.js 、Spring Boot 等主流开发框架
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2 text-gray-800">工具</h4>
+                    <p className="text-sm text-gray-600">熟悉 Git、Maven、Docker 等项目管理及构建工具</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2 text-gray-800">协作</h4>
+                    <p className="text-sm text-gray-600">
+                      具备良好的中英文沟通及协调能力，快速适应新环境，高效学习新技术栈并参与开发
+                    </p>
+                  </div>
+                 
+                </div>
+              </CardContent>
+            </Card>
+
 
             {/* 教育背景下方添加动态内容 */}
 
