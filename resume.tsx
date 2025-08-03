@@ -38,7 +38,7 @@ export default function Resume() {
                   {/* Photo Placeholder */}
                   <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-white/20 border-4 border-white/30 flex items-center justify-center overflow-hidden">
                     <img
-                      src="https://test-1301780692.cos.ap-guangzhou.myqcloud.com/1%E5%AF%B8-1-2.jpg"
+                      src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/2%E5%AF%B8-1-2-20250803-133845.jpg"
                       alt="个人照片"
                       className="w-full h-full object-cover rounded-full"
                     />
@@ -669,7 +669,7 @@ export default function Resume() {
                     <div className="mb-4 flex justify-center">
                       <div className="w-48 h-32 bg-white rounded-lg border-2 border-orange-200 flex items-center justify-center overflow-hidden">
                         <img
-                          src="https://test-1301780692.cos.ap-guangzhou.myqcloud.com/%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%85%A7%E7%89%87.png"
+                          src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%85%A7%E7%89%87-20250803-133918.png"
                           alt="梦想教室照片"
                           className="w-full h-full object-cover rounded-lg"
                         />
@@ -746,7 +746,7 @@ export default function Resume() {
                       <div className="mb-4 flex justify-center">
                         <div className="w-40 h-28 bg-white rounded-lg border-2 border-green-200 flex items-center justify-center overflow-hidden">
                           <img
-                            src="https://test-1301780692.cos.ap-guangzhou.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250730180148_7.jpg"
+                            src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250730180148_7-20250803-133944.jpg"
                             alt="支教活动照片"
                             className="w-full h-full object-cover rounded-lg"
                           />
