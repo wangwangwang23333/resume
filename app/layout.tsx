@@ -16,8 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="icon" href="/resume/favicon.ico" type="image/x-icon" />
+      <link rel="shortcut icon" href="/resume/favicon.ico" type="image/x-icon" />
         <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};

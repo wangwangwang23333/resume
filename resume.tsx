@@ -40,7 +40,7 @@ export default function Resume() {
                     <img
                       src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/2%E5%AF%B8-1-2-20250803-133845.jpg"
                       alt="个人照片"
-                      className="w-full h-full object-cover rounded-full"
+                      className="w-full h-full object-cover object-[center_10%] scale-90  transform rounded-full"
                     />
                   </div>
                   <h1 className="text-2xl font-bold mb-2">汪明杰</h1>
