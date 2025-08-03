@@ -5,7 +5,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: '汪明杰的个人简历',
-  description: '用ai工具快速搭建的网站',
+  description: '用ai工具搭建的个人简历，欢迎了解我～',
 }
 
 export default function RootLayout({
@@ -16,6 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <style>{`
 html {
   font-family: ${GeistSans.style.fontFamily};
