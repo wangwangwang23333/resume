@@ -865,12 +865,11 @@ export default function Resume() {
                 {/* 电脑设备 - 放大版 */}
                 <div className="relative">
                   {/* 显示器 - 增大尺寸 */}
-                  <div className="w-28   h-24 bg-gray-800 rounded border-2 border-gray-600 relative">
+                  <div className="w-20   h-16 bg-gray-800 rounded border-2 border-gray-600 relative">
                     {/* 屏幕内容 - 更大更清晰 */}
                     <div className="absolute inset-1 bg-black rounded overflow-hidden">
                       <div className="text-green-200 text-xs font-mono p-2 leading-tight animate-[code_2s_ease-in-out_infinite]">
-                        <div className="text-cyan-200">{"$ npm start"}</div>
-                        <div className="text-green-200">{"✓ server ready"}</div>
+                        <div className="text-cyan-200">{"$ npm run serve"}</div>
                         <div className="text-purple-200">{"🚀 Building"}</div>
                       </div>
                     </div>
@@ -902,7 +901,7 @@ export default function Resume() {
 
               {/* 中间服务器机架 */}
               <div className="absolute left-1/2 transform -translate-x-1/2 bottom-4">
-                <div className="w-16 h-20 bg-gray-700 rounded border border-gray-500 relative">
+                <div className="w-14 h-20 bg-gray-700 rounded border border-gray-500 relative">
                   {/* 服务器指示灯 */}
                   <div className="absolute top-2 left-2 flex gap-1">
                     <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
@@ -913,7 +912,7 @@ export default function Resume() {
                   {Array.from({ length: 4 }).map((_, i) => (
                     <div
                       key={i}
-                      className="absolute w-12 h-3 bg-gray-600 left-2 border border-gray-500 rounded-sm"
+                      className="absolute w-10 h-3 bg-gray-600 left-2 border border-gray-500 rounded-sm"
                       style={{ top: `${8 + i * 4}px` }}
                     >
                       <div
