@@ -1,3 +1,5 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
@@ -15,12 +17,57 @@ import {
   Building2,
   Star,
   Target,
-  Clock,
-  BarChart3,
   TrendingUp,
 } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function Resume() {
+  const [keywords, setKeywords] = useState<Array<{ id: number; text: string; x: number; y: number }>>([])
+
+  const programmingKeywords = [
+    "Java",
+    "synchronized",
+    "LCP",
+    "Go",
+    "Spring",
+    "MySQL",
+    "Redis",
+    "Docker",
+    "Git",
+    "Maven",
+    "JVM",
+    "SQL",
+    "Cloud",
+    "Linux",
+    "JSON",
+    "HTTP",
+    "TCP",
+    "OOP",
+    "REST",
+    "etcd",
+    "zookeeper",
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newKeyword = {
+        id: Date.now(),
+        text: programmingKeywords[Math.floor(Math.random() * programmingKeywords.length)],
+        x: 120, // 从电脑屏幕位置开始
+        y: Math.random() * 60 + 20, // 随机高度
+      }
+
+      setKeywords((prev) => [...prev, newKeyword])
+
+      // 清理已经移出屏幕的关键词
+      setTimeout(() => {
+        setKeywords((prev) => prev.filter((k) => k.id !== newKeyword.id))
+      }, 6000)
+    }, 1500) // 每1.5秒生成一个新关键词
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-100 to-indigo-200">
       {/* 毛玻璃背景层 - 更明显的模糊效果 */}
@@ -780,6 +827,232 @@ export default function Resume() {
                 </div>
               </CardContent>
             </Card>
+
+            {/* 底部编程动画区域 */}
+            <div className="relative h-48 mt-12 overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+              {/* 动态网格背景 */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_24px,rgba(59,130,246,0.3)_25px,rgba(59,130,246,0.3)_26px,transparent_27px),linear-gradient(rgba(59,130,246,0.3)_1px,transparent_1px)] bg-[size:25px_25px] animate-[grid_20s_linear_infinite]"></div>
+              </div>
+
+              {/* 数据流线条 */}
+              <div className="absolute top-2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-[dataflow_3s_ease-in-out_infinite]"></div>
+              <div className="absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-green-400 to-transparent animate-[dataflow_4s_ease-in-out_infinite_1s]"></div>
+              <div className="absolute bottom-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-[dataflow_5s_ease-in-out_infinite_2s]"></div>
+
+              {/* 左侧程序员工作站 */}
+              <div className="absolute left-4 bottom-4 flex items-end gap-3">
+                {/* 程序员图标 */}
+                <div className="relative">
+                <div className="w-16 h-16  flex items-center justify-center shadow-md">
+                  <span className="text-white text-xl font-bold">👨‍💻</span>
+                </div>
+                  {/* 思考气泡 */}
+                  <div className="absolute -top-8 -right-2 w-8 h-6 bg-white rounded-lg opacity-90 animate-pulse shadow-lg">
+                    <div className="text-xs text-center pt-1">💡</div>
+                    <div className="absolute -bottom-1 left-2 w-2 h-2 bg-white transform rotate-45"></div>
+                  </div>
+                  {/* 打字动画指示 */}
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                    <div className="flex gap-1">
+                      <div className="w-1 h-1 bg-blue-400 rounded-full animate-bounce"></div>
+                      <div className="w-1 h-1 bg-blue-400 rounded-full animate-bounce delay-100"></div>
+                      <div className="w-1 h-1 bg-blue-400 rounded-full animate-bounce delay-200"></div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 电脑设备 - 放大版 */}
+                <div className="relative">
+                  {/* 显示器 - 增大尺寸 */}
+                  <div className="w-28   h-24 bg-gray-800 rounded border-2 border-gray-600 relative">
+                    {/* 屏幕内容 - 更大更清晰 */}
+                    <div className="absolute inset-1 bg-black rounded overflow-hidden">
+                      <div className="text-green-200 text-xs font-mono p-2 leading-tight animate-[code_2s_ease-in-out_infinite]">
+                        <div className="text-cyan-200">{"$ npm start"}</div>
+                        <div className="text-green-200">{"✓ server ready"}</div>
+                        <div className="text-purple-200">{"🚀 Building"}</div>
+                      </div>
+                    </div>
+                    {/* 屏幕发光效果 */}
+                    <div className="absolute inset-0 bg-green-400 rounded opacity-10 animate-pulse"></div>
+                    {/* 屏幕边框发光 */}
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded opacity-20 animate-pulse"></div>
+                  </div>
+                  {/* 显示器底座 */}
+                  <div className="w-10 h-3 bg-gray-600 mx-auto rounded-b relative">
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-4 h-1 bg-gray-500 rounded"></div>
+                  </div>
+                  {/* 键盘 - 稍微放大 */}
+                  <div className="w-18 h-7 bg-gray-700 rounded mt-1 relative shadow-lg">
+                    <div className="absolute inset-0.5 bg-gray-800 rounded grid grid-cols-10 gap-px p-1">
+                      {Array.from({ length: 20 }).map((_, i) => (
+                        <div
+                          key={i}
+                          className="bg-gray-600 rounded-sm animate-[keypress_2s_ease-in-out_infinite] hover:bg-blue-500 transition-colors"
+                          style={{ animationDelay: `${i * 0.1}s` }}
+                        ></div>
+                      ))}
+                    </div>
+                    {/* 键盘发光效果 */}
+                    <div className="absolute inset-0 bg-blue-400 rounded opacity-5 animate-pulse"></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 中间服务器机架 */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 bottom-4">
+                <div className="w-16 h-20 bg-gray-700 rounded border border-gray-500 relative">
+                  {/* 服务器指示灯 */}
+                  <div className="absolute top-2 left-2 flex gap-1">
+                    <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
+                    <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse delay-300"></div>
+                    <div className="w-1 h-1 bg-red-400 rounded-full animate-pulse delay-700"></div>
+                  </div>
+                  {/* 服务器层 */}
+                  {Array.from({ length: 4 }).map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-12 h-3 bg-gray-600 left-2 border border-gray-500 rounded-sm"
+                      style={{ top: `${8 + i * 4}px` }}
+                    >
+                      <div
+                        className="w-1 h-1 bg-green-400 rounded-full mt-1 ml-1 animate-pulse"
+                        style={{ animationDelay: `${i * 0.5}s` }}
+                      ></div>
+                    </div>
+                  ))}
+                  {/* 数据传输效果 */}
+                  <div className="absolute -top-2 left-1/2 w-px h-4 bg-cyan-400 animate-[pulse_1s_ease-in-out_infinite]"></div>
+                </div>
+              </div>
+
+              {/* 右侧云服务器 */}
+              <div className="absolute right-8 bottom-6">
+                {/* 云朵形状 */}
+                <div className="relative">
+                  <div className="w-12 h-6 bg-white rounded-full opacity-90 relative">
+                    <div className="absolute -left-2 top-1 w-6 h-4 bg-white rounded-full"></div>
+                    <div className="absolute -right-1 top-0 w-4 h-4 bg-white rounded-full"></div>
+                    <div className="absolute left-2 -top-1 w-6 h-4 bg-white rounded-full"></div>
+                    {/* 云内图标 */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-xs text-gray-600">☁️</div>
+                    </div>
+                  </div>
+                  {/* 上传下载箭头 */}
+                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+                    <div className="text-green-400 animate-bounce">↑</div>
+                    <div className="text-blue-400 animate-bounce delay-500">↓</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 飘动的编程关键词 - 增强版 */}
+              {keywords.map((keyword) => (
+                <div
+                  key={keyword.id}
+                  className="absolute text-sm font-mono font-semibold px-3 py-1 rounded-full shadow-lg animate-[enhancedFloat_6s_linear_forwards]"
+                  style={{
+                    left: `${keyword.x}px`,
+                    top: `${keyword.y}px`,
+                    background: `linear-gradient(45deg, hsl(${Math.random() * 360}, 70%, 60%), hsl(${Math.random() * 360}, 70%, 70%))`,
+                    color: "white",
+                    transform: `rotate(${Math.random() * 20 - 10}deg)`,
+                  }}
+                >
+                  {keyword.text}
+                  {/* 粒子效果 */}
+                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full animate-ping opacity-75"></div>
+                </div>
+              ))}
+
+              {/* 连接线动画 */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                <defs>
+                  <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="transparent" />
+                    <stop offset="50%" stopColor="rgba(59, 130, 246, 0.6)" />
+                    <stop offset="100%" stopColor="transparent" />
+                  </linearGradient>
+                </defs>
+                {/* 程序员到服务器的连接 */}
+                <line
+                  x1="80"
+                  y1="100"
+                  x2="200"
+                  y2="80"
+                  stroke="url(#connectionGradient)"
+                  strokeWidth="2"
+                  className="animate-[connection_3s_ease-in-out_infinite]"
+                />
+                {/* 服务器到云的连接 */}
+                <line
+                  x1="200"
+                  y1="60"
+                  x2="320"
+                  y2="70"
+                  stroke="url(#connectionGradient)"
+                  strokeWidth="2"
+                  className="animate-[connection_3s_ease-in-out_infinite_1s]"
+                />
+              </svg>
+            </div>
+
+            {/* 添加自定义动画样式 */}
+            <style jsx>{`
+              @keyframes enhancedFloat {
+                0% {
+                  transform: translateX(0) translateY(0) rotate(0deg) scale(0.8);
+                  opacity: 0;
+                }
+                10% {
+                  opacity: 1;
+                  transform: translateX(50px) translateY(-5px) rotate(5deg) scale(1);
+                }
+                50% {
+                  transform: translateX(calc(50vw - 60px)) translateY(-15px) rotate(-3deg) scale(1.1);
+                }
+                100% {
+                  transform: translateX(calc(100vw - 120px)) translateY(-25px) rotate(10deg) scale(0.9);
+                  opacity: 0;
+                }
+              }
+              
+              @keyframes typing {
+                0%, 100% { transform: translateY(0) rotate(0deg); }
+                50% { transform: translateY(-2px) rotate(5deg); }
+              }
+              
+              @keyframes code {
+                0% { opacity: 0.7; transform: translateY(0); }
+                25% { opacity: 1; transform: translateY(-1px); }
+                50% { opacity: 0.9; transform: translateY(0); }
+                75% { opacity: 1; transform: translateY(-1px); }
+                100% { opacity: 0.7; transform: translateY(0); }
+              }
+              
+              @keyframes keypress {
+                0%, 100% { transform: translateY(0); background-color: rgb(75, 85, 99); }
+                50% { transform: translateY(-1px); background-color: rgb(96, 165, 250); }
+              }
+              
+              @keyframes grid {
+                0% { transform: translate(0, 0); }
+                100% { transform: translate(25px, 25px); }
+              }
+              
+              @keyframes dataflow {
+                0%, 100% { opacity: 0; transform: translateX(-100%); }
+                50% { opacity: 1; transform: translateX(0); }
+              }
+              
+              @keyframes connection {
+                0%, 100% { stroke-dasharray: 0, 100; }
+                50% { stroke-dasharray: 50, 50; }
+              }
+            `}</style>
+
           </div>
         </div>
       </div>
