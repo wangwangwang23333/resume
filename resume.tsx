@@ -85,9 +85,9 @@ export default function Resume() {
                   {/* Photo Placeholder */}
                   <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-white/20 border-4 border-white/30 flex items-center justify-center overflow-hidden">
                     <img
-                      src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/2%E5%AF%B8-1-2-20250803-133845.jpg"
+                      src="/resume/1298492184942.jpeg"
                       alt="个人照片"
-                      className="w-full h-full object-cover object-[center_10%] scale-90  transform rounded-full"
+                      className="w-full h-full object-cover object-[center_15%] scale-80  transform rounded-full"
                     />
                   </div>
                   <h1 className="text-2xl font-bold mb-2">汪明杰</h1>
