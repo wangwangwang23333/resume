@@ -80,7 +80,7 @@ export default function Resume() {
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-100 to-indigo-200">
       {/* 毛玻璃背景层 - 更明显的模糊效果 */}
       <div className="fixed inset-0 bg-white/30 backdrop-blur-lg -z-10"></div>
-      
+
       {/* 内容容器 */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-8">
         <div className="grid lg:grid-cols-3 gap-8">
@@ -138,7 +138,7 @@ export default function Resume() {
               </CardContent>
             </Card>
 
-          
+
             {/* Education Card */}
             <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader className="bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-t-lg">
@@ -180,8 +180,8 @@ export default function Resume() {
               </CardContent>
             </Card>
 
-              {/* Skills Card */}
-              <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            {/* Skills Card */}
+            <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-t-lg">
                 <CardTitle className="flex items-center gap-2">
                   <Code className="w-5 h-5" />
@@ -201,7 +201,7 @@ export default function Resume() {
                   <div>
                     <h4 className="font-semibold mb-2 text-gray-800">框架</h4>
                     <p className="text-sm text-gray-600">
-                    熟悉 Vue.js 、Spring Boot 等主流开发框架
+                      熟悉 Vue.js 、Spring Boot 等主流开发框架
                     </p>
                   </div>
                   <div>
@@ -214,7 +214,7 @@ export default function Resume() {
                       具备良好的中英文沟通及协调能力，快速适应新环境，高效学习新技术栈并参与开发
                     </p>
                   </div>
-                 
+
                 </div>
               </CardContent>
             </Card>
@@ -238,7 +238,7 @@ export default function Resume() {
                     <polygon points="100,60 120,80 120,120 100,140 80,120 80,80" fill="none" />
                     <polygon points="100,80 110,90 110,110 100,120 90,110 90,90" fill="none" />
                   </g>
-                  
+
                   {/* 轴线 */}
                   <g stroke="#d1d5db" strokeWidth="1">
                     <line x1="100" y1="20" x2="100" y2="180" />
@@ -248,7 +248,7 @@ export default function Resume() {
                     <line x1="60" y1="50" x2="140" y2="150" />
                     <line x1="60" y1="150" x2="140" y2="50" />
                   </g>
-                  
+
                   {/* 技能标签 */}
                   <g fontSize="11" fill="#6b7280">
                     <text x="100" y="15" textAnchor="middle" className="font-medium">后端开发</text>
@@ -258,16 +258,16 @@ export default function Resume() {
                     <text x="40" y="135" textAnchor="end" className="font-medium">DevOps</text>
                     <text x="40" y="65" textAnchor="end" className="font-medium">架构设计</text>
                   </g>
-                  
+
                   {/* 数据多边形 */}
-                  <polygon 
-                    points="100,35 145,55 135,125 100,165 55,125 65,55" 
-                    fill="#8b5cf6" 
-                    fillOpacity="0.3" 
-                    stroke="#8b5cf6" 
+                  <polygon
+                    points="100,35 145,55 135,125 100,165 55,125 65,55"
+                    fill="#8b5cf6"
+                    fillOpacity="0.3"
+                    stroke="#8b5cf6"
                     strokeWidth="2"
                   />
-                  
+
                   {/* 数据点 */}
                   <g fill="#8b5cf6">
                     <circle cx="100" cy="35" r="3" />
@@ -461,7 +461,7 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                               <div className="text-4xl font-bold text-green-600 mb-1">3</div>
                               <div className="font-semibold text-green-700 text-sm">项发明专利</div>
                             </div>
-                            
+
                             {/* 右边三项专利并排 */}
                             <div className="md:col-span-3 grid md:grid-cols-3 gap-3">
                               <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
@@ -470,14 +470,14 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                                   实现边生成边上传的流式备份方案，<b>提升备份效率30%</b>
                                 </div>
                               </div>
-                              
+
                               <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
                                 <div className="font-semibold text-green-700 text-sm mb-2">Zookeeper的逻辑备份及恢复方法</div>
                                 <div className="text-xs text-gray-600 leading-relaxed">
                                   基于逻辑备份的Zookeeper流式备份与恢复方案，实现数据备份的自动化
                                 </div>
                               </div>
-                              
+
                               <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
                                 <div className="font-semibold text-green-700 text-sm mb-2">多层校验的文件完整性保障方法</div>
                                 <div className="text-xs text-gray-600 leading-relaxed">
@@ -719,15 +719,15 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                         <Badge className="bg-yellow-100 text-yellow-800">CSCWD 2024</Badge>
                         <Badge variant="outline">IEEE国际学术会议</Badge>
                         <a
-                        href="https://ieeexplore.ieee.org/abstract/document/10580253"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline flex items-center gap-1 text-sm"
-                      >
-                        查看论文 <ExternalLink className="w-3 h-3" />
-                      </a>
+                          href="https://ieeexplore.ieee.org/abstract/document/10580253"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline flex items-center gap-1 text-sm"
+                        >
+                          查看论文 <ExternalLink className="w-3 h-3" />
+                        </a>
                       </div>
-                      
+
                     </div>
                     <div className="bg-white rounded-lg p-4 border border-yellow-200">
                       <p className="font-semibold text-gray-800 mb-2">
@@ -738,15 +738,15 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                         <Badge className="bg-yellow-100 text-yellow-800">IEEE SMC 2024</Badge>
                         <Badge variant="outline">CCF推荐国际学术会议</Badge>
                         <a
-                        href="https://ieeexplore.ieee.org/abstract/document/10831572"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline flex items-center gap-1 text-sm"
-                      >
-                        查看论文 <ExternalLink className="w-3 h-3" />
-                      </a>
+                          href="https://ieeexplore.ieee.org/abstract/document/10831572"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline flex items-center gap-1 text-sm"
+                        >
+                          查看论文 <ExternalLink className="w-3 h-3" />
+                        </a>
                       </div>
-                      
+
                     </div>
                   </div>
                 </div>
@@ -808,10 +808,10 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
                         <div>个人荣获
                           <span className="bg-orange-100 px-2 py-1 rounded font-semibold">
-                              市级优秀大学生志愿者
-                            </span>
-                          
-                          </div>
+                            市级优秀大学生志愿者
+                          </span>
+
+                        </div>
                       </li>
                     </ul>
                   </div>
@@ -914,9 +914,9 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
               <div className="absolute left-4 bottom-4 flex items-end gap-3">
                 {/* 程序员图标 */}
                 <div className="relative">
-                <div className="w-16 h-16  flex items-center justify-center shadow-md">
-                  <span className="text-white text-xl font-bold">👨‍💻</span>
-                </div>
+                  <div className="w-16 h-16  flex items-center justify-center shadow-md">
+                    <span className="text-white text-xl font-bold">👨‍💻</span>
+                  </div>
                   {/* 思考气泡 */}
                   <div className="absolute -top-8 -right-2 w-8 h-6 bg-white rounded-lg opacity-90 animate-pulse shadow-lg">
                     <div className="text-xs text-center pt-1">💡</div>
@@ -1127,38 +1127,38 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
       </div>
 
       {/* 右下角悬浮下载按钮 - 动感版 */}
-<a
-  href="/resume/汪明杰-软件开发.pdf"
-  download
-  className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-full shadow-xl backdrop-blur-sm transition-all duration-300 group hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/25"
-  aria-label="下载简历 PDF"
->
-  {/* 图标：下载箭头 - 旋转动画 */}
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="22"
-    height="22"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="text-white group-hover:rotate-180 transition-transform duration-500 ease-in-out"
-  >
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-    <polyline points="7 10 12 15 17 10" />
-    <line x1="12" y1="15" x2="12" y2="3" />
-  </svg>
+      <a
+        href="/resume/汪明杰-软件开发.pdf"
+        download
+        className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-full shadow-xl backdrop-blur-sm transition-all duration-300 group hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/25"
+        aria-label="下载简历 PDF"
+      >
+        {/* 图标：下载箭头 - 旋转动画 */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-white group-hover:rotate-180 transition-transform duration-500 ease-in-out"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
 
-  {/* 鼠标悬停时显示的提示文字 */}
-  <span className="absolute right-full mr-4 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap transform translate-x-2 group-hover:translate-x-0 shadow-lg">
-    下载 PDF 简历
-    <div className="absolute top-1/2 -right-1 w-2 h-2 bg-gray-900 transform rotate-45 -translate-y-1/2"></div>
-  </span>
+        {/* 鼠标悬停时显示的提示文字 */}
+        <span className="absolute right-full mr-4 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap transform translate-x-2 group-hover:translate-x-0 shadow-lg">
+          下载 PDF 简历
+          <div className="absolute top-1/2 -right-1 w-2 h-2 bg-gray-900 transform rotate-45 -translate-y-1/2"></div>
+        </span>
 
-  {/* 悬停时的涟漪效果 */}
-  <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
-</a>
+        {/* 悬停时的涟漪效果 */}
+        <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
+      </a>
 
     </div>
   )
