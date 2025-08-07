@@ -1125,6 +1125,41 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
           </div>
         </div>
       </div>
+
+      {/* 右下角悬浮下载按钮 - 动感版 */}
+<a
+  href="/resume/汪明杰-软件开发.pdf"
+  download
+  className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-full shadow-xl backdrop-blur-sm transition-all duration-300 group hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/25"
+  aria-label="下载简历 PDF"
+>
+  {/* 图标：下载箭头 - 旋转动画 */}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="22"
+    height="22"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-white group-hover:rotate-180 transition-transform duration-500 ease-in-out"
+  >
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+
+  {/* 鼠标悬停时显示的提示文字 */}
+  <span className="absolute right-full mr-4 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap transform translate-x-2 group-hover:translate-x-0 shadow-lg">
+    下载 PDF 简历
+    <div className="absolute top-1/2 -right-1 w-2 h-2 bg-gray-900 transform rotate-45 -translate-y-1/2"></div>
+  </span>
+
+  {/* 悬停时的涟漪效果 */}
+  <div className="absolute inset-0 rounded-full bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-500 opacity-0 group-hover:opacity-100"></div>
+</a>
+
     </div>
   )
 }
