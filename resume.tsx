@@ -20,9 +20,17 @@ import {
   TrendingUp,
 } from "lucide-react"
 import { useEffect, useState } from "react"
+import { Check } from "lucide-react"
+import { clsx } from "clsx"
 
 export default function Resume() {
   const [keywords, setKeywords] = useState<Array<{ id: number; text: string; x: number; y: number }>>([])
+  const [toast, setToast] = useState<string | null>(null)
+
+  const showToast = (msg: string) => {
+    setToast(msg)
+    setTimeout(() => setToast(null), 3000)
+  }
 
   const programmingKeywords = [
     "Java",
@@ -299,9 +307,71 @@ export default function Resume() {
               </div>
             </div>
 
+            {/* Toast */}
+            {toast && (
+              <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+                <div className="flex items-center gap-2 bg-white text-gray-800 shadow-xl rounded-md py-2 px-4 border border-gray-200">
+                  <Check className="w-4 h-4 text-green-500" />
+                  <span>{toast}</span>
+                </div>
+              </div>
+            )}
+
             {/* 滚动装饰元素 - 从上往下粘贴效果 */}
             <div className="sticky top-4 z-40 mt-8">
-              <div className="bg-gray-900 rounded-lg p-3 shadow-lg border border-gray-700">
+              <div className="bg-gray-900 rounded-lg p-3 shadow-lg border border-gray-700 relative">
+                {/* 复制按钮 */}
+                <button
+                  onClick={async () => {
+                    const resumeText = `汪明杰 - 后台开发工程师
+邮箱：montywang1226@163.com
+电话：19121765585
+
+教育背景
+- 同济大学 硕士 计算机科学与技术学院 2023.9-2026.3
+- 同济大学 本科 软件学院 2019.9-2023.6
+
+实习经历
+- 腾讯（2025.4-至今）Go开发
+  - 核心成果：产出3项发明专利（基于内存数据流的ETCD快照备份方法、Zookeeper的逻辑备份及恢复方法、多层校验的文件完整性保障方法）
+- 蔚来汽车（2022.1-2022.7）Java开发
+  - 接口响应时间优化 2s → 300ms， 性能提升约 85%
+
+技能关键词
+Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服务、性能优化
+
+科研成果
+- 两篇学术论文
+- 发明专利 3 项
+
+社会活动
+- 研究生班班长
+- 春雨支教社团社长
+- 市级优秀大学生志愿者
+-------------------------------
+以上内容复制自汪明杰的个人简历网站（https://wangwangwang.website/resume/），欢迎点击进入了解详细信息哦～
+`;
+                    try {
+                      await navigator.clipboard.writeText(resumeText);
+                      showToast("您已经成功复制了汪明杰的个人简历，欢迎内推～")
+                    } catch (err) {
+                      showToast("复制失败，请手动复制")
+                    }
+                  }}
+                  className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors"
+                  title="Copy to clipboard"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path d="M216 32H88a8 8 0 00-8 8v40H40a8 8 0 00-8 8v128a8 8 0 008 8h128a8 8 0 008-8v-40h40a8 8 0 008-8V40a8 8 0 00-8-8zm-56 176H48V96h112zm48-48h-32V88a8 8 0 00-8-8H96V48h112z" />
+                  </svg>
+                </button>
+
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -328,7 +398,7 @@ export default function Resume() {
                     <span className="text-gray-500 mr-2">5</span>
                     <span className="ml-4">bugs: 0,</span>
                   </div>
-                                    <div className="flex">
+                  <div className="flex">
                     <span className="text-gray-500 mr-2">6</span>
                     <span className="ml-4">future: '∞',</span>
                   </div>
