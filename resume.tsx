@@ -493,10 +493,12 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                             <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                             <div>
                               <strong className="text-gray-800">Etcd 与 Zookeeper 备份恢复及性能优化</strong>
-                              ：设计并落地 Etcd 流式备份方案，实现"边生成边上传"，将整体备份效率
-                              <span className="bg-yellow-100 px-1 rounded font-semibold">提升约 30%</span>；设计并实现
-                              Zookeeper 逻辑备份方案；上述方案已申请
-                              <span className="bg-yellow-100 px-1 rounded font-semibold">发明专利两项</span>；
+                              ：设计并落地 Etcd 流式备份方案，实现本地存储空间 
+                              <span className="bg-yellow-100 px-1 rounded font-semibold">0</span>
+                               占用，提升整体备份效率约 
+                               <span className="bg-yellow-100 px-1 rounded font-semibold">30%</span>
+                               ；设计并实现 Zookeeper 逻辑备份方案；上述技术成果已申请
+                              <span className="bg-yellow-100 px-1 rounded font-semibold">发明专利2项</span>；
                             </div>
                           </li>
                           <li className="flex gap-3">
@@ -511,11 +513,16 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                           <li className="flex gap-3">
                             <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                             <div>
-                              <strong className="text-gray-800">数据完整性与稳定性构建</strong>：支持 MySQL{" "}
-                              <span className="bg-blue-100 px-1 rounded font-semibold">库表级逻辑备份</span>；构建
-                              <span className="bg-blue-100 px-1 rounded font-semibold">备份集校验机制</span>，支持 COS /
-                              OBS / S3 等多种存储介质，实现基于 CRC64 与分段 ETag
-                              的双重校验方案，保障端到端数据完整性；定义核心告警事件，并接入告警中台，实现故障自动发现与闭环响应能力。
+                              <strong className="text-gray-800">数据完整性与稳定性构建</strong>：
+                              构建基于 CRC64 与分段算法备份集
+                              <span className="bg-blue-100 px-1 rounded font-semibold">多层校验机制</span>
+                              ，支持
+                              <span className="bg-blue-100 px-1 rounded font-semibold">秒级内</span>
+                              完成校验，并支持 COS / OBS / S3 等多种存储介质，保障端到端数据完整性，以此为基础提交
+                              <span className="bg-blue-100 px-1 rounded font-semibold">发明专利 1 项</span>；
+                              开发支持 MySQL{" "}
+                              <span className="bg-blue-100 px-1 rounded font-semibold">库表级逻辑备份</span>；
+                              定义核心告警事件，并接入告警中台，实现故障自动发现与闭环响应能力。
                             </div>
                           </li>
                         </ul>
