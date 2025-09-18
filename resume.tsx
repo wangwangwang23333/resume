@@ -332,7 +332,7 @@ export default function Resume() {
 - 同济大学 本科 软件学院 2019.9-2023.6
 
 实习经历
-- 腾讯（2025.4-至今）Go开发
+- 腾讯（2025.4-2025.8）Go开发
   - 核心成果：产出3项发明专利（基于内存数据流的ETCD快照备份方法、Zookeeper的逻辑备份及恢复方法、多层校验的文件完整性保障方法）
 - 蔚来汽车（2022.1-2022.7）Java开发
   - 接口响应时间优化 2s → 300ms， 性能提升约 85%
@@ -446,7 +446,7 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                           </div>
                           <div className="flex items-center gap-2 text-sm text-gray-500">
                             <Calendar className="w-4 h-4" />
-                            <span>2025.4 - 至今</span>
+                            <span>2025.4 - 2025.8</span>
                           </div>
                         </div>
 
