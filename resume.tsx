@@ -459,11 +459,23 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                       <span>2026.04 - 至今</span>
                     </div>
                   </div>
-                  <ul className="space-y-4 text-gray-700 leading-relaxed">
+                  <ul className="space-y-3 text-sm text-gray-700">
                     {bytedanceExperience.map(({ title, description }) => (
-                      <li key={title}>
-                        <strong className="text-blue-800">{title}：</strong>
-                        {description}
+                      <li key={title} className="flex gap-3">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          <strong className="text-gray-800">{title}</strong>：
+                          {description.split(/(PM／RD／QA|Leader Agent|知识自迭代|案例召回、差异校验到必要补查|异常终止与过期任务清理机制|40%|17%|76%|专利申请)/g).map((part, index) =>
+                            index % 2 === 0 ? part : (
+                              <span
+                                key={index}
+                                className={`${["40%", "17%", "76%", "专利申请"].includes(part) ? "bg-yellow-100" : "bg-blue-100"} px-1 rounded font-semibold`}
+                              >
+                                {part}
+                              </span>
+                            ),
+                          )}
+                        </div>
                       </li>
                     ))}
                   </ul>
