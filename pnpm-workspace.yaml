@@ -1,0 +1,3 @@
+# Static export uses unoptimized images and does not need sharp's install script.
+allowBuilds:
+  sharp: false
