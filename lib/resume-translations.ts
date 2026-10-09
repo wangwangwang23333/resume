@@ -2,7 +2,7 @@
 export const englishText: Record<string, string> = {
   "汪明杰": "Mingjie Wang",
   "个人简历": "Resume",
-  "男 / 2000.12": "Male / Dec 2000",
+  "上海": "Shanghai",
   "教育背景": "Education",
   "同济大学": "Tongji University",
   "硕士": "Master’s",

@@ -144,7 +144,7 @@ export default function Resume({ locale = "zh" }: { locale?: "zh" | "en" }) {
                   <p className="text-blue-100 text-lg mb-4">{t("个人简历")}</p>
                   <div className="flex items-center justify-center gap-2 text-sm text-blue-100 mb-6">
                     <MapPin className="w-4 h-4" />
-                    <span>{t("男 / 2000.12")}</span>
+                    <span>{t("上海")}</span>
                   </div>
                 </div>
 
