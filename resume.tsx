@@ -1,5 +1,6 @@
 "use client"
 
+import { SectionNavigation } from "@/components/section-navigation"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
@@ -92,7 +93,8 @@ export default function Resume() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-100 to-indigo-200">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-100 to-indigo-200 xl:pr-36">
+      <SectionNavigation />
       {/* 毛玻璃背景层 - 更明显的模糊效果 */}
       <div className="fixed inset-0 bg-white/30 backdrop-blur-lg -z-10"></div>
 
@@ -438,7 +440,7 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
           {/* Right Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Current Work Experience */}
-            <Card className="shadow-xl border-0 rounded-2xl overflow-hidden">
+            <Card id="work" className="scroll-mt-24 xl:scroll-mt-8 shadow-xl border-0 rounded-2xl overflow-hidden">
               <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-6">
                 <CardTitle className="flex items-center gap-3 text-2xl">
                   <Briefcase className="w-7 h-7" />
@@ -484,7 +486,7 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
             </Card>
 
             {/* Work Experience - Highlighted Section */}
-            <div className="relative">
+            <div id="internships" className="relative scroll-mt-24 xl:scroll-mt-8">
               <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-500 rounded-2xl transform rotate-1"></div>
               <Card className="relative shadow-2xl border-0 rounded-2xl overflow-hidden hover:shadow-3xl transition-all duration-500">
                 <CardHeader className="bg-gradient-to-r from-orange-500 to-red-600 text-white py-6">
@@ -652,193 +654,8 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
               </Card>
             </div>
 
-            {/* Projects Section */}
-            <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <Code className="w-6 h-6" />
-                  项目经历
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-6 space-y-6">
-                <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-200">
-                  <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <h3 className="font-bold text-lg text-gray-800">实时协同编程工具 CoIDEA 和 CoVSCode</h3>
-                    <Badge variant="outline" className="border-indigo-300 text-indigo-700">
-                      Java
-                    </Badge>
-                    <Badge variant="outline" className="border-indigo-300 text-indigo-700">
-                      TypeScript
-                    </Badge>
-                    <Badge variant="outline" className="border-indigo-300 text-indigo-700">
-                      JGit
-                    </Badge>
-                  </div>
-                  <p className="text-sm text-gray-600 mb-4">
-                    <strong>项目描述</strong>：基于 IntelliJ IDEA 和 VS Code
-                    代码编辑器构建的支持实时协同编程等一系列功能的插件
-                  </p>
-                  <div>
-                    <p className="text-sm font-semibold mb-3 text-gray-800">核心技术实现：</p>
-                    <ul className="space-y-2 text-sm text-gray-700">
-                      <li className="flex gap-3">
-                        <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          实现 <span className="bg-indigo-100 px-1 rounded font-semibold">OT</span>（Operational
-                          Transformation）算法，确保多站点间代码文本的增量式实时同步；
-                        </div>
-                      </li>
-                      <li className="flex gap-3">
-                        <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          将代码结构解析为<span className="bg-indigo-100 px-1 rounded font-semibold">抽象语法树</span>
-                          （AST），实现基于依赖的自动锁定方案，从而预防语义冲突；
-                        </div>
-                      </li>
-                      <li className="flex gap-3">
-                        <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>集成 JGit，实现协同会话中代码版本的细粒度管理和与远端仓库同步的功能。</div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 border border-emerald-200">
-                  <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <h3 className="font-bold text-lg text-gray-800">归宿——民宿预订系统</h3>
-                    <Badge variant="outline" className="border-emerald-300 text-emerald-700">
-                      Spring Cloud
-                    </Badge>
-                    <Badge variant="outline" className="border-emerald-300 text-emerald-700">
-                      MySQL
-                    </Badge>
-                    <Badge variant="outline" className="border-emerald-300 text-emerald-700">
-                      Redis
-                    </Badge>
-                    <Badge variant="outline" className="border-emerald-300 text-emerald-700">
-                      Docker
-                    </Badge>
-                  </div>
-                  <p className="text-sm text-gray-600 mb-4">
-                    <strong>项目描述</strong>：基于 Vue.js 和 Spring Cloud
-                    开发的前后端分离民宿预订平台，覆盖从下单到支付等一系列功能
-                  </p>
-                  <div>
-                    <p className="text-sm font-semibold mb-3 text-gray-800">架构设计与优化：</p>
-                    <ul className="space-y-2 text-sm text-gray-700">
-                      <li className="flex gap-3">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          基于 <span className="bg-emerald-100 px-1 rounded font-semibold">Spring Cloud</span>{" "}
-                          开发微服务，并在多台服务器上部署实例，以提升系统并发能力和可用性；
-                        </div>
-                      </li>
-                      <li className="flex gap-3">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          基于 <span className="bg-emerald-100 px-1 rounded font-semibold">Spring Cloud Gateway</span>
-                          ，集成 <span className="bg-emerald-100 px-1 rounded font-semibold">SaToken</span> 实现支持{" "}
-                          <span className="bg-emerald-100 px-1 rounded font-semibold">RBAC权限模型</span>{" "}
-                          的微服务统一鉴权，通过{" "}
-                          <span className="bg-emerald-100 px-1 rounded font-semibold">RedisLimitRater</span>（
-                          <span className="bg-emerald-100 px-1 rounded font-semibold">令牌桶算法</span>
-                          ）实现分布式限流；
-                        </div>
-                      </li>
-                      <li className="flex gap-3">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          使用 <span className="bg-emerald-100 px-1 rounded font-semibold">Redis</span>{" "}
-                          缓存高频查询，优化查询性能；结合{" "}
-                          <span className="bg-emerald-100 px-1 rounded font-semibold">Redisson</span>{" "}
-                          实现分布式锁及超时订单的延迟删除；
-                        </div>
-                      </li>
-                      <li className="flex gap-3">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>集成高德地图、支付宝沙盒环境、身份证 OCR等外部 API，实现地图展示、逆地理编码等功能。</div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Academic Achievements */}
-            <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardHeader className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white">
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <Award className="w-6 h-6" />
-                  科研成果
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-6 space-y-6">
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-200">
-                  <h4 className="font-bold mb-4 text-yellow-800 flex items-center gap-2">
-                    <Award className="w-5 h-5" />
-                    论文发表
-                  </h4>
-                  <div className="space-y-4">
-                    <div className="bg-white rounded-lg p-4 border border-yellow-200">
-                      <p className="font-semibold text-gray-800 mb-2">
-                        A Novel Request-Invitation-Approval Scheme for Flexible Semantic Conflict Prevention in
-                        Real-Time Collaborative Programming
-                      </p>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge className="bg-yellow-100 text-yellow-800">CSCWD 2024</Badge>
-                        <Badge variant="outline">IEEE国际学术会议</Badge>
-                        <a
-                          href="https://ieeexplore.ieee.org/abstract/document/10580253"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline flex items-center gap-1 text-sm"
-                        >
-                          查看论文 <ExternalLink className="w-3 h-3" />
-                        </a>
-                      </div>
-
-                    </div>
-                    <div className="bg-white rounded-lg p-4 border border-yellow-200">
-                      <p className="font-semibold text-gray-800 mb-2">
-                        Annotation-based Semantic Conflict Prevention in Real-time Collaborative Programming: Approach,
-                        Techniques, Prototype, and User Study
-                      </p>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge className="bg-yellow-100 text-yellow-800">IEEE SMC 2024</Badge>
-                        <Badge variant="outline">CCF推荐国际学术会议</Badge>
-                        <a
-                          href="https://ieeexplore.ieee.org/abstract/document/10831572"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:underline flex items-center gap-1 text-sm"
-                        >
-                          查看论文 <ExternalLink className="w-3 h-3" />
-                        </a>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
-                  <h4 className="font-bold mb-3 text-purple-800 flex items-center gap-2">
-                    <Award className="w-5 h-5" />
-                    发明专利
-                  </h4>
-                  <div className="bg-white rounded-lg p-4 border border-purple-200">
-                    <p className="font-semibold text-gray-800 mb-2">
-                      一种语义冲突预防方法
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      针对实时协同编程中语义冲突问题，采用申请-审批等机制平衡实时协同编程自由度和冲突预防之间的关系。
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
             {/* Social Activities */}
-            <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <Card id="activities" className="scroll-mt-24 xl:scroll-mt-8 shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-600 text-white">
                 <CardTitle className="flex items-center gap-2 text-xl">
                   <Users className="w-6 h-6" />
@@ -962,6 +779,199 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                         </li>
                       </ul>
                     </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Projects Section */}
+            <Card id="projects" className="scroll-mt-24 xl:scroll-mt-8 shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+                <CardTitle className="flex items-center gap-2 text-xl">
+                  <Code className="w-6 h-6" />
+                  项目经历
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6 space-y-6">
+                <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-200">
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <h3 className="font-bold text-lg text-gray-800">实时协同编程工具 CoIDEA 和 CoVSCode</h3>
+                    <Badge variant="outline" className="border-indigo-300 text-indigo-700">
+                      Java
+                    </Badge>
+                    <Badge variant="outline" className="border-indigo-300 text-indigo-700">
+                      TypeScript
+                    </Badge>
+                    <Badge variant="outline" className="border-indigo-300 text-indigo-700">
+                      JGit
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4">
+                    <strong>项目描述</strong>：基于 IntelliJ IDEA 和 VS Code
+                    代码编辑器构建的支持实时协同编程等一系列功能的插件
+                  </p>
+                  <div>
+                    <p className="text-sm font-semibold mb-3 text-gray-800">核心技术实现：</p>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex gap-3">
+                        <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          实现 <span className="bg-indigo-100 px-1 rounded font-semibold">OT</span>（Operational
+                          Transformation）算法，确保多站点间代码文本的增量式实时同步；
+                        </div>
+                      </li>
+                      <li className="flex gap-3">
+                        <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          将代码结构解析为<span className="bg-indigo-100 px-1 rounded font-semibold">抽象语法树</span>
+                          （AST），实现基于依赖的自动锁定方案，从而预防语义冲突；
+                        </div>
+                      </li>
+                      <li className="flex gap-3">
+                        <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>集成 JGit，实现协同会话中代码版本的细粒度管理和与远端仓库同步的功能。</div>
+                      </li>
+                      <li className="flex gap-3">
+                        <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          将 <span className="bg-indigo-100 px-1 rounded font-semibold">Agent 接入为独立协作者</span>，
+                          通过现有协同编辑通道同步代码修改，支持
+                          <span className="bg-indigo-100 px-1 rounded font-semibold">人与 Agent 实时协作</span>。
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 border border-emerald-200">
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <h3 className="font-bold text-lg text-gray-800">归宿——民宿预订系统</h3>
+                    <Badge variant="outline" className="border-emerald-300 text-emerald-700">
+                      Spring Cloud
+                    </Badge>
+                    <Badge variant="outline" className="border-emerald-300 text-emerald-700">
+                      MySQL
+                    </Badge>
+                    <Badge variant="outline" className="border-emerald-300 text-emerald-700">
+                      Redis
+                    </Badge>
+                    <Badge variant="outline" className="border-emerald-300 text-emerald-700">
+                      Docker
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-gray-600 mb-4">
+                    <strong>项目描述</strong>：基于 Vue.js 和 Spring Cloud
+                    开发的前后端分离民宿预订平台，覆盖从下单到支付等一系列功能
+                  </p>
+                  <div>
+                    <p className="text-sm font-semibold mb-3 text-gray-800">架构设计与优化：</p>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex gap-3">
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          基于 <span className="bg-emerald-100 px-1 rounded font-semibold">Spring Cloud</span>{" "}
+                          开发微服务，并在多台服务器上部署实例，以提升系统并发能力和可用性；
+                        </div>
+                      </li>
+                      <li className="flex gap-3">
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          基于 <span className="bg-emerald-100 px-1 rounded font-semibold">Spring Cloud Gateway</span>
+                          ，集成 <span className="bg-emerald-100 px-1 rounded font-semibold">SaToken</span> 实现支持{" "}
+                          <span className="bg-emerald-100 px-1 rounded font-semibold">RBAC权限模型</span>{" "}
+                          的微服务统一鉴权，通过{" "}
+                          <span className="bg-emerald-100 px-1 rounded font-semibold">RedisLimitRater</span>（
+                          <span className="bg-emerald-100 px-1 rounded font-semibold">令牌桶算法</span>
+                          ）实现分布式限流；
+                        </div>
+                      </li>
+                      <li className="flex gap-3">
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>
+                          使用 <span className="bg-emerald-100 px-1 rounded font-semibold">Redis</span>{" "}
+                          缓存高频查询，优化查询性能；结合{" "}
+                          <span className="bg-emerald-100 px-1 rounded font-semibold">Redisson</span>{" "}
+                          实现分布式锁及超时订单的延迟删除；
+                        </div>
+                      </li>
+                      <li className="flex gap-3">
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div>集成高德地图、支付宝沙盒环境、身份证 OCR等外部 API，实现地图展示、逆地理编码等功能。</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Academic Achievements */}
+            <Card id="research" className="scroll-mt-24 xl:scroll-mt-8 shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <CardHeader className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white">
+                <CardTitle className="flex items-center gap-2 text-xl">
+                  <Award className="w-6 h-6" />
+                  科研成果
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6 space-y-6">
+                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-200">
+                  <h4 className="font-bold mb-4 text-yellow-800 flex items-center gap-2">
+                    <Award className="w-5 h-5" />
+                    论文发表
+                  </h4>
+                  <div className="space-y-4">
+                    <div className="bg-white rounded-lg p-4 border border-yellow-200">
+                      <p className="font-semibold text-gray-800 mb-2">
+                        A Novel Request-Invitation-Approval Scheme for Flexible Semantic Conflict Prevention in
+                        Real-Time Collaborative Programming
+                      </p>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge className="bg-yellow-100 text-yellow-800">CSCWD 2024</Badge>
+                        <Badge variant="outline">IEEE国际学术会议</Badge>
+                        <a
+                          href="https://ieeexplore.ieee.org/abstract/document/10580253"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline flex items-center gap-1 text-sm"
+                        >
+                          查看论文 <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
+
+                    </div>
+                    <div className="bg-white rounded-lg p-4 border border-yellow-200">
+                      <p className="font-semibold text-gray-800 mb-2">
+                        Annotation-based Semantic Conflict Prevention in Real-time Collaborative Programming: Approach,
+                        Techniques, Prototype, and User Study
+                      </p>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge className="bg-yellow-100 text-yellow-800">IEEE SMC 2024</Badge>
+                        <Badge variant="outline">CCF推荐国际学术会议</Badge>
+                        <a
+                          href="https://ieeexplore.ieee.org/abstract/document/10831572"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline flex items-center gap-1 text-sm"
+                        >
+                          查看论文 <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
+                  <h4 className="font-bold mb-3 text-purple-800 flex items-center gap-2">
+                    <Award className="w-5 h-5" />
+                    发明专利
+                  </h4>
+                  <div className="bg-white rounded-lg p-4 border border-purple-200">
+                    <p className="font-semibold text-gray-800 mb-2">
+                      一种语义冲突预防方法
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      针对实时协同编程中语义冲突问题，采用申请-审批等机制平衡实时协同编程自由度和冲突预防之间的关系。
+                    </p>
                   </div>
                 </div>
               </CardContent>
