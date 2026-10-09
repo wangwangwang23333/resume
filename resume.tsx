@@ -23,6 +23,21 @@ import { useEffect, useState } from "react"
 import { Check } from "lucide-react"
 import { clsx } from "clsx"
 
+const bytedanceExperience = [
+  {
+    title: "AI 一站式研发平台",
+    description: "对接多个业务团队，将研发流程需求转化为技术方案，明确 PM／RD／QA 等角色职责、接口与交付标准；推动 Leader Agent 驱动的多角色协作流程设计、开发及联调，贯通需求至交付全流程，人均并行任务数提升 40%。",
+  },
+  {
+    title: "自迭代 Oncall Agent",
+    description: "针对重复排障与 Skill 冗余调用问题，设计知识自迭代方案，接入业务工具与知识检索，沉淀人工确认的排查路径及关键证据；设计“案例召回、差异校验到必要补查”流程复用已验证路径，重复 Skill 调用降低约 17%，相关方案已提交专利申请。",
+  },
+  {
+    title: "广告审核业务与稳定性治理",
+    description: "参与广告审核链路的需求分析与后端开发；针对审核任务长期卡审及兜底任务重复执行的问题，设计并落地异常终止与过期任务清理机制，上线后卡审任务日均存量下降 76%。",
+  },
+]
+
 export default function Resume() {
   const [keywords, setKeywords] = useState<Array<{ id: number; text: string; x: number; y: number }>>([])
   const [toast, setToast] = useState<string | null>(null)
@@ -331,6 +346,10 @@ export default function Resume() {
 - 同济大学 硕士 计算机科学与技术学院 2023.9-2026.3
 - 同济大学 本科 软件学院 2019.9-2023.6
 
+工作经历
+- 字节跳动（2026.04 - 至今）Agent开发
+${bytedanceExperience.map(({ title, description }) => `  - ${title}：${description}`).join("\n")}
+
 实习经历
 - 腾讯（2025.4-2025.8）Go开发
   - 核心成果：产出3项发明专利（基于内存数据流的ETCD快照备份方法、Zookeeper的逻辑备份及恢复方法、多层校验的文件完整性保障方法）
@@ -418,6 +437,40 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
 
           {/* Right Content */}
           <div className="lg:col-span-2 space-y-8">
+            {/* Current Work Experience */}
+            <Card className="shadow-xl border-0 rounded-2xl overflow-hidden">
+              <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-6">
+                <CardTitle className="flex items-center gap-3 text-2xl">
+                  <Briefcase className="w-7 h-7" />
+                  工作经历
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6 md:p-8 bg-white">
+                <div className="border-l-4 border-blue-500 pl-4 md:pl-6">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-5">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Building2 className="w-6 h-6 text-blue-600" />
+                      <span className="font-bold text-xl text-gray-800">字节跳动</span>
+                      <Badge className="bg-blue-100 text-blue-800 font-semibold">Agent开发</Badge>
+                      <Badge variant="outline" className="border-blue-300 text-blue-700">当前</Badge>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-500 whitespace-nowrap">
+                      <Calendar className="w-4 h-4" />
+                      <span>2026.04 - 至今</span>
+                    </div>
+                  </div>
+                  <ul className="space-y-4 text-gray-700 leading-relaxed">
+                    {bytedanceExperience.map(({ title, description }) => (
+                      <li key={title}>
+                        <strong className="text-blue-800">{title}：</strong>
+                        {description}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Work Experience - Highlighted Section */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-500 rounded-2xl transform rotate-1"></div>
@@ -440,9 +493,6 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                             <Building2 className="w-6 h-6 text-green-600" />
                             <span className="font-bold text-xl text-gray-800">Tencent 腾讯</span>
                             <Badge className="bg-green-100 text-green-800 font-semibold">Go开发</Badge>
-                            <Badge variant="outline" className="border-green-300 text-green-700">
-                              当前
-                            </Badge>
                           </div>
                           <div className="flex items-center gap-2 text-sm text-gray-500">
                             <Calendar className="w-4 h-4" />
