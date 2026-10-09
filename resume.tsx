@@ -1,6 +1,8 @@
 "use client"
 
 import { SectionNavigation } from "@/components/section-navigation"
+import { LanguageSwitcher } from "@/components/language-switcher"
+import { englishText } from "@/lib/resume-translations"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
@@ -39,7 +41,29 @@ const bytedanceExperience = [
   },
 ]
 
-export default function Resume() {
+const bytedanceExperienceEn = [
+  {
+    title: "AI Development Platform",
+    description: "Worked with multiple business teams to translate development workflow needs into technical solutions, defining PM/RD/QA responsibilities, interfaces, and delivery criteria. Drove the design, development, and integration of a Leader Agent-led multi-agent workflow from requirements to delivery, increasing average concurrent tasks per person by 40%.",
+  },
+  {
+    title: "Self-improving On-call Agent",
+    description: "Designed a knowledge feedback loop to address repetitive troubleshooting and redundant Skill calls. Integrated business tools and knowledge retrieval, capturing human-validated troubleshooting paths and evidence. Designed case retrieval, difference validation, and targeted follow-up checks to reuse verified paths, reducing redundant Skill calls by approximately 17%. Submitted a patent application for the approach.",
+  },
+  {
+    title: "Ad Review Backend & Reliability",
+    description: "Contributed to requirements analysis and backend development for the ad review pipeline. Designed and implemented abnormal-task termination and expired-task cleanup to address stalled reviews and repeated fallback execution, reducing the average daily backlog of stalled review tasks by 76% after launch.",
+  },
+]
+
+export default function Resume({ locale = "zh" }: { locale?: "zh" | "en" }) {
+  const isEnglish = locale === "en"
+  const t = (text: string) => isEnglish ? (englishText[text] ?? text) : text
+  const workExperience = isEnglish ? bytedanceExperienceEn : bytedanceExperience
+
+  useEffect(() => {
+    document.documentElement.lang = isEnglish ? "en" : "zh-CN"
+  }, [isEnglish])
   const [keywords, setKeywords] = useState<Array<{ id: number; text: string; x: number; y: number }>>([])
   const [toast, setToast] = useState<string | null>(null)
 
@@ -93,14 +117,15 @@ export default function Resume() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-100 to-indigo-200 xl:pr-36">
-      <SectionNavigation />
+    <div className="min-h-screen overflow-x-clip bg-gradient-to-br from-slate-100 via-blue-100 to-indigo-200 xl:pr-36">
+      <SectionNavigation locale={locale} />
       {/* 毛玻璃背景层 - 更明显的模糊效果 */}
       <div className="fixed inset-0 bg-white/30 backdrop-blur-lg -z-10"></div>
 
       {/* 内容容器 */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-8">
-        <div className="grid lg:grid-cols-3 gap-8">
+        <LanguageSwitcher locale={locale} />
+        <div id="resume-content" lang={isEnglish ? "en" : "zh-CN"} className="grid lg:grid-cols-3 gap-8">
           {/* Left Sidebar */}
           <div className="lg:col-span-1 space-y-6">
             {/* Personal Info Card */}
@@ -111,15 +136,15 @@ export default function Resume() {
                   <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-white/20 border-4 border-white/30 flex items-center justify-center overflow-hidden">
                     <img
                       src="/resume/1298492184942.jpeg"
-                      alt="个人照片"
+                      alt={isEnglish ? "Portrait of Mingjie Wang" : "个人照片"}
                       className="w-full h-full object-cover object-[center_15%] scale-80  transform rounded-full"
                     />
                   </div>
-                  <h1 className="text-2xl font-bold mb-2">汪明杰</h1>
-                  <p className="text-blue-100 text-lg mb-4">个人简历</p>
+                  <h1 className="text-2xl font-bold mb-2">{t("汪明杰")}</h1>
+                  <p className="text-blue-100 text-lg mb-4">{t("个人简历")}</p>
                   <div className="flex items-center justify-center gap-2 text-sm text-blue-100 mb-6">
                     <MapPin className="w-4 h-4" />
-                    <span>男 / 2000.12</span>
+                    <span>{t("男 / 2000.12")}</span>
                   </div>
                 </div>
 
@@ -160,39 +185,33 @@ export default function Resume() {
             <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader className="bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-t-lg">
                 <CardTitle className="flex items-center gap-2">
-                  <GraduationCap className="w-5 h-5" />
-                  教育背景
-                </CardTitle>
+                  <GraduationCap className="w-5 h-5" />{t("教育背景")}</CardTitle>
               </CardHeader>
               <CardContent className="pt-6 space-y-4">
                 <div className="relative pl-6 border-l-2 border-purple-200">
                   <div className="absolute -left-2 top-0 w-4 h-4 bg-purple-500 rounded-full"></div>
                   <div className="mb-2">
                     <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <span className="font-semibold text-gray-800">同济大学</span>
-                      <Badge className="bg-purple-100 text-purple-800">硕士</Badge>
+                      <span className="font-semibold text-gray-800">{t("同济大学")}</span>
+                      <Badge className="bg-purple-100 text-purple-800">{t("硕士")}</Badge>
                     </div>
-                    <p className="text-sm text-gray-600 mb-1">计算机科学与技术学院</p>
+                    <p className="text-sm text-gray-600 mb-1">{t("计算机科学与技术学院")}</p>
                     <p className="text-xs text-gray-500">2023.9 - 2026.3</p>
                   </div>
-                  <p className="text-xs text-gray-600">
-                    优秀学生标兵 / 学术论文 2 篇 / 专利 2 项 / 市级优秀大学生志愿者 / 担任研究生班班长
-                  </p>
+                  <p className="text-xs text-gray-600">{t("优秀学生标兵 / 学术论文 2 篇 / 专利 2 项 / 市级优秀大学生志愿者 / 担任研究生班班长")}</p>
                 </div>
 
                 <div className="relative pl-6 border-l-2 border-purple-200">
                   <div className="absolute -left-2 top-0 w-4 h-4 bg-purple-400 rounded-full"></div>
                   <div className="mb-2">
                     <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <span className="font-semibold text-gray-800">同济大学</span>
-                      <Badge className="bg-purple-100 text-purple-800">本科</Badge>
+                      <span className="font-semibold text-gray-800">{t("同济大学")}</span>
+                      <Badge className="bg-purple-100 text-purple-800">{t("本科")}</Badge>
                     </div>
-                    <p className="text-sm text-gray-600 mb-1">软件学院 · 排名前5%</p>
+                    <p className="text-sm text-gray-600 mb-1">{t("软件学院 · 排名前5%")}</p>
                     <p className="text-xs text-gray-500">2019.9 - 2023.6</p>
                   </div>
-                  <p className="text-xs text-gray-600">
-                    上海市优秀毕业生 / 国家奖学金 / 国际基因工程大赛金奖 / CET6 / 担任春雨支教社团社长
-                  </p>
+                  <p className="text-xs text-gray-600">{t("上海市优秀毕业生 / 国家奖学金 / 国际基因工程大赛金奖 / CET6 / 担任春雨支教社团社长")}</p>
                 </div>
               </CardContent>
             </Card>
@@ -201,35 +220,29 @@ export default function Resume() {
             <Card className="shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-t-lg">
                 <CardTitle className="flex items-center gap-2">
-                  <Code className="w-5 h-5" />
-                  个人技能
-                </CardTitle>
+                  <Code className="w-5 h-5" />{t("个人技能")}</CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">Java基础</h4>
-                    <p className="text-sm text-gray-600">熟悉 Java 基础知识，熟悉多线程并发，熟悉 JVM 内存模型</p>
+                    <h4 className="font-semibold mb-2 text-gray-800">{t("Java基础")}</h4>
+                    <p className="text-sm text-gray-600">{t("熟悉 Java 基础知识，熟悉多线程并发，熟悉 JVM 内存模型")}</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">数据库</h4>
-                    <p className="text-sm text-gray-600">熟练使用 MySQL 与 Redis，具备慢查询优化、索引调优等经验</p>
+                    <h4 className="font-semibold mb-2 text-gray-800">{t("数据库")}</h4>
+                    <p className="text-sm text-gray-600">{t("熟练使用 MySQL 与 Redis，具备慢查询优化、索引调优等经验")}</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">框架</h4>
-                    <p className="text-sm text-gray-600">
-                      熟悉 Vue.js 、Spring Boot 等主流开发框架
-                    </p>
+                    <h4 className="font-semibold mb-2 text-gray-800">{t("框架")}</h4>
+                    <p className="text-sm text-gray-600">{t("熟悉 Vue.js 、Spring Boot 等主流开发框架")}</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">工具</h4>
-                    <p className="text-sm text-gray-600">熟悉 Git、Maven、Docker 等项目管理及构建工具</p>
+                    <h4 className="font-semibold mb-2 text-gray-800">{t("工具")}</h4>
+                    <p className="text-sm text-gray-600">{t("熟悉 Git、Maven、Docker 等项目管理及构建工具")}</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">协作</h4>
-                    <p className="text-sm text-gray-600">
-                      具备良好的中英文沟通及协调能力，快速适应新环境，高效学习新技术栈并参与开发
-                    </p>
+                    <h4 className="font-semibold mb-2 text-gray-800">{t("协作")}</h4>
+                    <p className="text-sm text-gray-600">{t("具备良好的中英文沟通及协调能力，快速适应新环境，高效学习新技术栈并参与开发")}</p>
                   </div>
 
                 </div>
@@ -243,11 +256,9 @@ export default function Resume() {
             {/* 技能雷达图 - 改为真正的雷达图 */}
             <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg p-2">
               <h4 className="font-semibold text-purple-800 mb-2 flex items-center gap-2">
-                <Target className="w-4 h-4" />
-                技能雷达
-              </h4>
+                <Target className="w-4 h-4" />{t("技能雷达")}</h4>
               <div className="flex justify-center">
-                <svg width="180" height="180" viewBox="0 0 200 200" className="w-44 h-44">
+                <svg width="180" height="180" viewBox="-25 0 250 200" className="w-44 h-44">
                   {/* 背景网格 */}
                   <g stroke="#e5e7eb" strokeWidth="1">
                     <polygon points="100,20 150,60 150,140 100,180 50,140 50,60" fill="none" />
@@ -268,12 +279,12 @@ export default function Resume() {
 
                   {/* 技能标签 */}
                   <g fontSize="11" fill="#6b7280">
-                    <text x="100" y="15" textAnchor="middle" className="font-medium">后端开发</text>
-                    <text x="160" y="65" textAnchor="start" className="font-medium">系统设计</text>
-                    <text x="160" y="135" textAnchor="start" className="font-medium">云原生</text>
-                    <text x="100" y="195" textAnchor="middle" className="font-medium">算法优化</text>
+                    <text x="100" y="15" textAnchor="middle" className="font-medium">{t("后端开发")}</text>
+                    <text x="160" y="65" textAnchor="start" className="font-medium">{t("系统设计")}</text>
+                    <text x="160" y="135" textAnchor="start" className="font-medium">{t("云原生")}</text>
+                    <text x="100" y="195" textAnchor="middle" className="font-medium">{t("算法优化")}</text>
                     <text x="40" y="135" textAnchor="end" className="font-medium">DevOps</text>
-                    <text x="40" y="65" textAnchor="end" className="font-medium">架构设计</text>
+                    <text x="40" y="65" textAnchor="end" className="font-medium">{t("架构设计")}</text>
                   </g>
 
                   {/* 数据多边形 */}
@@ -301,17 +312,15 @@ export default function Resume() {
             {/* 技术影响力统计 */}
             <div className="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-lg p-4">
               <h4 className="font-semibold text-cyan-800 mb-3 flex items-center gap-2">
-                <TrendingUp className="w-4 h-4" />
-                技术影响力
-              </h4>
+                <TrendingUp className="w-4 h-4" />{t("技术影响力")}</h4>
               <div className="grid grid-cols-2 gap-3 text-center">
                 <div>
                   <div className="text-2xl font-bold text-cyan-600">50+</div>
-                  <div className="text-xs text-gray-600">代码审查</div>
+                  <div className="text-xs text-gray-600">{t("代码审查")}</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-cyan-600">5+</div>
-                  <div className="text-xs text-gray-600">技术分享</div>
+                  <div className="text-xs text-gray-600">{t("技术分享")}</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-cyan-600">100+</div>
@@ -319,7 +328,7 @@ export default function Resume() {
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-cyan-600">80+</div>
-                  <div className="text-xs text-gray-600">问题解决</div>
+                  <div className="text-xs text-gray-600">{t("问题解决")}</div>
                 </div>
               </div>
             </div>
@@ -340,43 +349,12 @@ export default function Resume() {
                 {/* 复制按钮 */}
                 <button
                   onClick={async () => {
-                    const resumeText = `汪明杰 - 个人简历
-邮箱：montywang1226@163.com
-电话：19121765585
-
-教育背景
-- 同济大学 硕士 计算机科学与技术学院 2023.9-2026.3
-- 同济大学 本科 软件学院 2019.9-2023.6
-
-工作经历
-- 字节跳动（2026.04 - 至今）Agent开发
-${bytedanceExperience.map(({ title, description }) => `  - ${title}：${description}`).join("\n")}
-
-实习经历
-- 腾讯（2025.4-2025.8）Go开发
-  - 核心成果：产出3项发明专利（基于内存数据流的ETCD快照备份方法、Zookeeper的逻辑备份及恢复方法、多层校验的文件完整性保障方法）
-- 蔚来汽车（2022.1-2022.7）Java开发
-  - 接口响应时间优化 2s → 300ms， 性能提升约 85%
-
-技能关键词
-Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服务、性能优化
-
-科研成果
-- 两篇学术论文
-- 发明专利 3 项
-
-社会活动
-- 研究生班班长
-- 春雨支教社团社长
-- 市级优秀大学生志愿者
--------------------------------
-以上内容复制自汪明杰的个人简历网站（https://wangwangwang.website/resume/），欢迎点击进入了解详细信息哦～
-`;
+                    const resumeText = `${document.getElementById("resume-content")?.innerText ?? ""}\n\n${window.location.href}`
                     try {
                       await navigator.clipboard.writeText(resumeText);
-                      showToast("您已经成功复制了汪明杰的个人简历，欢迎内推～")
+                      showToast(isEnglish ? "Resume copied to clipboard." : "您已经成功复制了汪明杰的个人简历，欢迎内推～")
                     } catch (err) {
-                      showToast("复制失败，请手动复制")
+                      showToast(isEnglish ? "Could not copy. Please select and copy the text manually." : "复制失败，请手动复制")
                     }
                   }}
                   className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors"
@@ -393,7 +371,7 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                   </svg>
                 </button>
 
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex flex-wrap items-center gap-2 mb-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
@@ -443,35 +421,33 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
             <Card id="work" className="scroll-mt-24 xl:scroll-mt-8 shadow-xl border-0 rounded-2xl overflow-hidden">
               <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-6">
                 <CardTitle className="flex items-center gap-3 text-2xl">
-                  <Briefcase className="w-7 h-7" />
-                  工作经历
-                </CardTitle>
+                  <Briefcase className="w-7 h-7" />{t("工作经历")}</CardTitle>
               </CardHeader>
               <CardContent className="p-6 md:p-8 bg-white">
                 <div className="border-l-4 border-blue-500 pl-4 md:pl-6">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-5">
                     <div className="flex flex-wrap items-center gap-3">
                       <Building2 className="w-6 h-6 text-blue-600" />
-                      <span className="font-bold text-xl text-gray-800">字节跳动</span>
-                      <Badge className="bg-blue-100 text-blue-800 font-semibold">Agent开发</Badge>
-                      <Badge variant="outline" className="border-blue-300 text-blue-700">当前</Badge>
+                      <span className="font-bold text-xl text-gray-800">{t("字节跳动")}</span>
+                      <Badge className="bg-blue-100 text-blue-800 font-semibold">{t("Agent开发")}</Badge>
+                      <Badge variant="outline" className="border-blue-300 text-blue-700">{t("当前")}</Badge>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-500 whitespace-nowrap">
                       <Calendar className="w-4 h-4" />
-                      <span>2026.04 - 至今</span>
+                      <span>{t("2026.04 - 至今")}</span>
                     </div>
                   </div>
                   <ul className="space-y-3 text-sm text-gray-700">
-                    {bytedanceExperience.map(({ title, description }) => (
+                    {workExperience.map(({ title, description }) => (
                       <li key={title} className="flex gap-3">
                         <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                         <div>
-                          <strong className="text-gray-800">{title}</strong>：
-                          {description.split(/(PM／RD／QA|Leader Agent|知识自迭代|案例召回、差异校验到必要补查|异常终止与过期任务清理机制|40%|17%|76%|专利申请)/g).map((part, index) =>
+                          <strong className="text-gray-800">{title}</strong>{isEnglish ? ": " : "："}
+                          {description.split(/(PM／RD／QA|PM\/RD\/QA|Leader Agent|知识自迭代|knowledge feedback loop|案例召回、差异校验到必要补查|case retrieval, difference validation, and targeted follow-up checks|异常终止与过期任务清理机制|abnormal-task termination and expired-task cleanup|40%|17%|76%|专利申请|patent application)/g).map((part, index) =>
                             index % 2 === 0 ? part : (
                               <span
                                 key={index}
-                                className={`${["40%", "17%", "76%", "专利申请"].includes(part) ? "bg-yellow-100" : "bg-blue-100"} px-1 rounded font-semibold`}
+                                className={`${["40%", "17%", "76%", "专利申请", "patent application"].includes(part) ? "bg-yellow-100" : "bg-blue-100"} px-1 rounded font-semibold`}
                               >
                                 {part}
                               </span>
@@ -491,9 +467,7 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
               <Card className="relative shadow-2xl border-0 rounded-2xl overflow-hidden hover:shadow-3xl transition-all duration-500">
                 <CardHeader className="bg-gradient-to-r from-orange-500 to-red-600 text-white py-6">
                   <CardTitle className="flex items-center gap-3 text-2xl">
-                    <Briefcase className="w-7 h-7" />
-                    实习经历
-                    <Star className="w-6 h-6 text-yellow-300" />
+                    <Briefcase className="w-7 h-7" />{t("实习经历")}<Star className="w-6 h-6 text-yellow-300" />
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8 bg-white">
@@ -503,10 +477,10 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                       <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-green-400 to-emerald-600 rounded-full"></div>
                       <div className="pl-8">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                          <div className="flex items-center gap-3 mb-2 md:mb-0">
+                          <div className="flex flex-wrap items-center gap-3 mb-2 md:mb-0">
                             <Building2 className="w-6 h-6 text-green-600" />
-                            <span className="font-bold text-xl text-gray-800">Tencent 腾讯</span>
-                            <Badge className="bg-green-100 text-green-800 font-semibold">Go开发</Badge>
+                            <span className="font-bold text-xl text-gray-800">{t("Tencent 腾讯")}</span>
+                            <Badge className="bg-green-100 text-green-800 font-semibold">{t("Go开发")}</Badge>
                           </div>
                           <div className="flex items-center gap-2 text-sm text-gray-500">
                             <Calendar className="w-4 h-4" />
@@ -516,37 +490,30 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
 
                         <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6 mb-4">
                           <h4 className="font-semibold text-green-800 mb-4 flex items-center gap-2">
-                            <Star className="w-4 h-4" />
-                            核心成果
-                          </h4>
+                            <Star className="w-4 h-4" />{t("核心成果")}</h4>
                           <div className="grid md:grid-cols-4 gap-4">
                             {/* 左边大数字 */}
                             <div className="bg-white rounded-lg p-6 border border-green-200 flex flex-col items-center justify-center text-center">
                               <div className="text-4xl font-bold text-green-600 mb-1">3</div>
-                              <div className="font-semibold text-green-700 text-sm">项发明专利</div>
+                              <div className="font-semibold text-green-700 text-sm">{t("项发明专利")}</div>
                             </div>
 
                             {/* 右边三项专利并排 */}
-                            <div className="md:col-span-3 grid md:grid-cols-3 gap-3">
+                            <div className="md:col-span-3 grid 2xl:grid-cols-3 gap-3">
                               <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
-                                <div className="font-semibold text-green-700 text-sm mb-2">基于内存数据流的ETCD快照备份方法</div>
-                                <div className="text-xs text-gray-600 leading-relaxed">
-                                  实现边生成边上传的流式备份方案，<b>提升备份效率30%</b>
+                                <div className="font-semibold text-green-700 text-sm mb-2">{t("基于内存数据流的ETCD快照备份方法")}</div>
+                                <div className="text-xs text-gray-600 leading-relaxed">{t("实现边生成边上传的流式备份方案，")}<b>{t("提升备份效率30%")}</b>
                                 </div>
                               </div>
 
                               <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
-                                <div className="font-semibold text-green-700 text-sm mb-2">Zookeeper的逻辑备份及恢复方法</div>
-                                <div className="text-xs text-gray-600 leading-relaxed">
-                                  基于逻辑备份的Zookeeper流式备份与恢复方案，实现数据备份的自动化
-                                </div>
+                                <div className="font-semibold text-green-700 text-sm mb-2">{t("Zookeeper的逻辑备份及恢复方法")}</div>
+                                <div className="text-xs text-gray-600 leading-relaxed">{t("基于逻辑备份的Zookeeper流式备份与恢复方案，实现数据备份的自动化")}</div>
                               </div>
 
                               <div className="bg-white rounded-lg p-4 border border-green-200 hover:shadow-md transition-shadow">
-                                <div className="font-semibold text-green-700 text-sm mb-2">多层校验的文件完整性保障方法</div>
-                                <div className="text-xs text-gray-600 leading-relaxed">
-                                  基于分段ETag与二级校验算法的双重校验机制，确保数据文件的完整性
-                                </div>
+                                <div className="font-semibold text-green-700 text-sm mb-2">{t("多层校验的文件完整性保障方法")}</div>
+                                <div className="text-xs text-gray-600 leading-relaxed">{t("基于分段ETag与二级校验算法的双重校验机制，确保数据文件的完整性")}</div>
                               </div>
                             </div>
                           </div>
@@ -556,38 +523,18 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                           <li className="flex gap-3">
                             <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                             <div>
-                              <strong className="text-gray-800">Etcd 与 Zookeeper 备份恢复及性能优化</strong>
-                              ：设计并落地 Etcd 流式备份方案，实现本地存储空间 
-                              <span className="bg-yellow-100 px-1 rounded font-semibold">0</span>
-                               占用，提升整体备份效率约 
-                               <span className="bg-yellow-100 px-1 rounded font-semibold">30%</span>
-                               ；设计并实现 Zookeeper 逻辑备份方案；上述技术成果已申请
-                              <span className="bg-yellow-100 px-1 rounded font-semibold">发明专利2项</span>；
-                            </div>
+                              <strong className="text-gray-800">{t("Etcd 与 Zookeeper 备份恢复及性能优化")}</strong>{t("：设计并落地 Etcd 流式备份方案，实现本地存储空间")}<span className="bg-yellow-100 px-1 rounded font-semibold">0</span>{t("占用，提升整体备份效率约")}<span className="bg-yellow-100 px-1 rounded font-semibold">30%</span>{t("；设计并实现 Zookeeper 逻辑备份方案；上述技术成果已申请")}<span className="bg-yellow-100 px-1 rounded font-semibold">{t("发明专利2项")}</span>{isEnglish ? "." : "；"}</div>
                           </li>
                           <li className="flex gap-3">
                             <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                             <div>
-                              <strong className="text-gray-800">备份全流程支持与一致性保障</strong>
-                              ：基于上述方案，支持定时备份、备份进度上报、备份集上传等功能；引入
-                              <span className="bg-blue-100 px-1 rounded font-semibold">分布式锁机制</span>
-                              ，保障多节点环境下任务执行的唯一性；
-                            </div>
+                              <strong className="text-gray-800">{t("备份全流程支持与一致性保障")}</strong>{t("：基于上述方案，支持定时备份、备份进度上报、备份集上传等功能；引入")}<span className="bg-blue-100 px-1 rounded font-semibold">{t("分布式锁机制")}</span>{t("，保障多节点环境下任务执行的唯一性；")}</div>
                           </li>
                           <li className="flex gap-3">
                             <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                             <div>
-                              <strong className="text-gray-800">数据完整性与稳定性构建</strong>：
-                              构建基于 CRC64 与分段算法备份集
-                              <span className="bg-blue-100 px-1 rounded font-semibold">多层校验机制</span>
-                              ，支持
-                              <span className="bg-blue-100 px-1 rounded font-semibold">秒级内</span>
-                              完成校验，并支持 COS / OBS / S3 等多种存储介质，保障端到端数据完整性，以此为基础提交
-                              <span className="bg-blue-100 px-1 rounded font-semibold">发明专利 1 项</span>；
-                              开发支持 MySQL{" "}
-                              <span className="bg-blue-100 px-1 rounded font-semibold">库表级逻辑备份</span>；
-                              定义核心告警事件，并接入告警中台，实现故障自动发现与闭环响应能力。
-                            </div>
+                              <strong className="text-gray-800">{t("数据完整性与稳定性构建")}</strong>{t("： 构建基于 CRC64 与分段算法备份集")}<span className="bg-blue-100 px-1 rounded font-semibold">{t("多层校验机制")}</span>{t("，支持")}<span className="bg-blue-100 px-1 rounded font-semibold">{t("秒级内")}</span>{t("完成校验，并支持 COS / OBS / S3 等多种存储介质，保障端到端数据完整性，以此为基础提交")}<span className="bg-blue-100 px-1 rounded font-semibold">{t("发明专利 1 项")}</span>{t("； 开发支持 MySQL")}{" "}
+                              <span className="bg-blue-100 px-1 rounded font-semibold">{t("库表级逻辑备份")}</span>{t("； 定义核心告警事件，并接入告警中台，实现故障自动发现与闭环响应能力。")}</div>
                           </li>
                         </ul>
                       </div>
@@ -598,10 +545,10 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                       <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 to-indigo-600 rounded-full"></div>
                       <div className="pl-8">
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                          <div className="flex items-center gap-3 mb-2 md:mb-0">
+                          <div className="flex flex-wrap items-center gap-3 mb-2 md:mb-0">
                             <Building2 className="w-6 h-6 text-blue-600" />
-                            <span className="font-bold text-xl text-gray-800">NIO 蔚来汽车</span>
-                            <Badge className="bg-blue-100 text-blue-800 font-semibold">Java开发</Badge>
+                            <span className="font-bold text-xl text-gray-800">{t("NIO 蔚来汽车")}</span>
+                            <Badge className="bg-blue-100 text-blue-800 font-semibold">{t("Java开发")}</Badge>
                           </div>
                           <div className="flex items-center gap-2 text-sm text-gray-500">
                             <Calendar className="w-4 h-4" />
@@ -611,14 +558,12 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
 
                         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-4">
                           <h4 className="font-semibold text-blue-800 mb-3 flex items-center gap-2">
-                            <Star className="w-4 h-4" />
-                            性能优化成果
-                          </h4>
+                            <Star className="w-4 h-4" />{t("性能优化成果")}</h4>
                           <div className="bg-white rounded-lg p-4 border border-blue-200">
                             <div className="text-center">
-                              <div className="font-semibold text-blue-700">接口响应时间优化</div>
+                              <div className="font-semibold text-blue-700">{t("接口响应时间优化")}</div>
                               <div className="text-3xl font-bold text-blue-600 my-2">2s → 300ms</div>
-                              <div className="text-sm text-gray-600">性能提升约 85%</div>
+                              <div className="text-sm text-gray-600">{t("性能提升约 85%")}</div>
                             </div>
                           </div>
                         </div>
@@ -626,25 +571,17 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                         <ul className="space-y-3 text-sm text-gray-700">
                           <li className="flex gap-3">
                             <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <div>
-                              参与数据可视化平台开发，基于{" "}
-                              <span className="bg-blue-100 px-1 rounded font-semibold">Spring Task</span>{" "}
-                              动态注册机制实现数据集的差异化配置和多频率动态更新；
-                            </div>
+                            <div>{t("参与数据可视化平台开发，基于")}{" "}
+                              <span className="bg-blue-100 px-1 rounded font-semibold">Spring Task</span>{" "}{t("动态注册机制实现数据集的差异化配置和多频率动态更新；")}</div>
                           </li>
                           <li className="flex gap-3">
                             <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <div>
-                              通过<span className="bg-blue-100 px-1 rounded font-semibold">线程池</span>
-                              的应用提高数据集更新效率，结合惰性更新策略减少冗余 API 调用；
-                            </div>
+                            <div>{t("通过")}<span className="bg-blue-100 px-1 rounded font-semibold">{t("线程池")}</span>{t("的应用提高数据集更新效率，结合惰性更新策略减少冗余 API 调用；")}</div>
                           </li>
                           <li className="flex gap-3">
                             <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <div>
-                              基于慢日志分析优化 SQL 索引设计，集成 Redis 缓存热点数据，接口平均响应时间从{" "}
-                              <span className="bg-yellow-100 px-1 rounded font-semibold">2s 优化至 300ms</span>。
-                            </div>
+                            <div>{t("基于慢日志分析优化 SQL 索引设计，集成 Redis 缓存热点数据，接口平均响应时间从")}{" "}
+                              <span className="bg-yellow-100 px-1 rounded font-semibold">{t("2s 优化至 300ms")}</span>{isEnglish ? "." : "。"}</div>
                           </li>
                         </ul>
                       </div>
@@ -658,22 +595,20 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
             <Card id="activities" className="scroll-mt-24 xl:scroll-mt-8 shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader className="bg-gradient-to-r from-green-500 to-emerald-600 text-white">
                 <CardTitle className="flex items-center gap-2 text-xl">
-                  <Users className="w-6 h-6" />
-                  社会活动
-                </CardTitle>
+                  <Users className="w-6 h-6" />{t("社会活动")}</CardTitle>
               </CardHeader>
               <CardContent className="p-6">
                 <div className="space-y-6">
                   {/* 梦想教室项目 - 放在最上面 */}
                   <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-xl p-6 border border-orange-200">
-                    <h4 className="font-bold mb-3 text-orange-800">"梦想教室"项目 (2024年7月-8月)</h4>
+                    <h4 className="font-bold mb-3 text-orange-800">{t("\"梦想教室\"项目 (2024年7月-8月)")}</h4>
 
                     {/* 增大照片区域 */}
                     <div className="mb-4 flex justify-center">
                       <div className="w-48 h-32 bg-white rounded-lg border-2 border-orange-200 flex items-center justify-center overflow-hidden">
                         <img
                           src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/%E6%97%A0%E4%BA%BA%E6%9C%BA%E7%85%A7%E7%89%87-20250803-133918.png"
-                          alt="梦想教室照片"
+                          alt={isEnglish ? "Dream Classroom project" : "梦想教室照片"}
                           className="w-full h-full object-cover rounded-lg"
                         />
                       </div>
@@ -682,20 +617,15 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>参与"梦想教室"的设计和施工过程</div>
+                        <div>{t("参与\"梦想教室\"的设计和施工过程")}</div>
                       </li>
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          利用专业知识设计"与AI对话"课程，为孩子们拍照并了解理想职业后，通过AI生成未来职业照，激发职业想象；课外引导学生动手操作并控制无人机
-                        </div>
+                        <div>{t("利用专业知识设计\"与AI对话\"课程，为孩子们拍照并了解理想职业后，通过AI生成未来职业照，激发职业想象；课外引导学生动手操作并控制无人机")}</div>
                       </li>
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>个人荣获
-                          <span className="bg-orange-100 px-2 py-1 rounded font-semibold">
-                            市级优秀大学生志愿者
-                          </span>
+                        <div>{t("个人荣获")}<span className="bg-orange-100 px-2 py-1 rounded font-semibold">{t("市级优秀大学生志愿者")}</span>
 
                         </div>
                       </li>
@@ -708,29 +638,25 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                     <div className="space-y-6">
                       {/* 研究生班班长 - 在上 */}
                       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
-                        <h4 className="font-bold mb-3 text-blue-800">研究生班班长 (2023年至今)</h4>
-                        <p className="text-sm text-gray-700 mb-4">
-                          担任软件工程研究生班班长，负责班级日常事务管理和同学间的沟通协调工作
-                        </p>
+                        <h4 className="font-bold mb-3 text-blue-800">{t("研究生班班长 (2023年至今)")}</h4>
+                        <p className="text-sm text-gray-700 mb-4">{t("担任软件工程研究生班班长，负责班级日常事务管理和同学间的沟通协调工作")}</p>
 
                         <div className="space-y-2 text-sm text-gray-700">
                           <div className="flex gap-3">
                             <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <div>组织班级学术交流活动和团建活动</div>
+                            <div>{t("组织班级学术交流活动和团建活动")}</div>
                           </div>
                           <div className="flex gap-3">
                             <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                            <div>建立班级信息共享平台，提高信息传达效率</div>
+                            <div>{t("建立班级信息共享平台，提高信息传达效率")}</div>
                           </div>
                         </div>
                       </div>
 
                       {/* 院学生会组长 - 在下 */}
                       <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
-                        <h4 className="font-bold mb-3 text-purple-800">院学生会组长 (2024-2025年)</h4>
-                        <p className="text-sm text-gray-700 mb-4">
-                          担任学院学生会学风建设组组长，组织博思论坛等活动
-                        </p>
+                        <h4 className="font-bold mb-3 text-purple-800">{t("院学生会组长 (2024-2025年)")}</h4>
+                        <p className="text-sm text-gray-700 mb-4">{t("担任学院学生会学风建设组组长，组织博思论坛等活动")}</p>
 
                         {/* <div className="space-y-2 text-sm text-gray-700">
                           <div className="flex gap-3">
@@ -743,14 +669,14 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
 
                     {/* 右侧单个卡片 - 春雨支教社团 */}
                     <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200">
-                      <h4 className="font-bold mb-3 text-green-800">春雨支教社团社长 (2019-2020年)</h4>
+                      <h4 className="font-bold mb-3 text-green-800">{t("春雨支教社团社长 (2019-2020年)")}</h4>
 
                       {/* 增大照片区域 */}
                       <div className="mb-4 flex justify-center">
                         <div className="w-40 h-28 bg-white rounded-lg border-2 border-green-200 flex items-center justify-center overflow-hidden">
                           <img
                             src="https://upic-1301780692.cos.ap-shanghai.myqcloud.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250730180148_7-20250803-133944.jpg"
-                            alt="支教活动照片"
+                            alt={isEnglish ? "Volunteer teaching activity" : "支教活动照片"}
                             className="w-full h-full object-cover rounded-lg"
                           />
                         </div>
@@ -759,22 +685,20 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                       <ul className="space-y-2 text-sm text-gray-700">
                         <li className="flex gap-3">
                           <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <div>负责社团内外事务管理、活动组织</div>
+                          <div>{t("负责社团内外事务管理、活动组织")}</div>
                         </li>
                         <li className="flex gap-3">
                           <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <div>作为团队领队，带领其他14名同学前往江西省吉安市遂川县开展为期两周的暑期夏令营活动</div>
+                          <div>{t("作为团队领队，带领其他14名同学前往江西省吉安市遂川县开展为期两周的暑期夏令营活动")}</div>
                         </li>
                         <li className="flex gap-3">
                           <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                          <div>负责协调组员分工，联系相关学校，安排每日教学进程以及组织最后的文艺汇演等工作</div>
+                          <div>{t("负责协调组员分工，联系相关学校，安排每日教学进程以及组织最后的文艺汇演等工作")}</div>
                         </li>
                         <li className="flex gap-3">
                           <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                           <div>
-                            <span className="bg-green-100 px-2 py-1 rounded font-semibold">
-                              项目荣获同济大学优秀青年志愿服务项目
-                            </span>
+                            <span className="bg-green-100 px-2 py-1 rounded font-semibold">{t("项目荣获同济大学优秀青年志愿服务项目")}</span>
                           </div>
                         </li>
                       </ul>
@@ -788,14 +712,12 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
             <Card id="projects" className="scroll-mt-24 xl:scroll-mt-8 shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
                 <CardTitle className="flex items-center gap-2 text-xl">
-                  <Code className="w-6 h-6" />
-                  项目经历
-                </CardTitle>
+                  <Code className="w-6 h-6" />{t("项目经历")}</CardTitle>
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-200">
                   <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <h3 className="font-bold text-lg text-gray-800">实时协同编程工具 CoIDEA 和 CoVSCode</h3>
+                    <h3 className="font-bold text-lg text-gray-800">{t("实时协同编程工具 CoIDEA 和 CoVSCode")}</h3>
                     <Badge variant="outline" className="border-indigo-300 text-indigo-700">
                       Java
                     </Badge>
@@ -807,37 +729,25 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                     </Badge>
                   </div>
                   <p className="text-sm text-gray-600 mb-4">
-                    <strong>项目描述</strong>：基于 IntelliJ IDEA 和 VS Code
-                    代码编辑器构建的支持实时协同编程等一系列功能的插件
-                  </p>
+                    <strong>{t("项目描述")}</strong>{t("：基于 IntelliJ IDEA 和 VS Code 代码编辑器构建的支持实时协同编程等一系列功能的插件")}</p>
                   <div>
-                    <p className="text-sm font-semibold mb-3 text-gray-800">核心技术实现：</p>
+                    <p className="text-sm font-semibold mb-3 text-gray-800">{t("核心技术实现：")}</p>
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          实现 <span className="bg-indigo-100 px-1 rounded font-semibold">OT</span>（Operational
-                          Transformation）算法，确保多站点间代码文本的增量式实时同步；
-                        </div>
+                        <div>{t("实现")}<span className="bg-indigo-100 px-1 rounded font-semibold">OT</span>{t("（Operational Transformation）算法，确保多站点间代码文本的增量式实时同步；")}</div>
                       </li>
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          将代码结构解析为<span className="bg-indigo-100 px-1 rounded font-semibold">抽象语法树</span>
-                          （AST），实现基于依赖的自动锁定方案，从而预防语义冲突；
-                        </div>
+                        <div>{t("将代码结构解析为")}<span className="bg-indigo-100 px-1 rounded font-semibold">{t("抽象语法树")}</span>{t("（AST），实现基于依赖的自动锁定方案，从而预防语义冲突；")}</div>
                       </li>
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>集成 JGit，实现协同会话中代码版本的细粒度管理和与远端仓库同步的功能。</div>
+                        <div>{t("集成 JGit，实现协同会话中代码版本的细粒度管理和与远端仓库同步的功能。")}</div>
                       </li>
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          将 <span className="bg-indigo-100 px-1 rounded font-semibold">Agent 接入为独立协作者</span>，
-                          通过现有协同编辑通道同步代码修改，支持
-                          <span className="bg-indigo-100 px-1 rounded font-semibold">人与 Agent 实时协作</span>。
-                        </div>
+                        <div>{t("将")}<span className="bg-indigo-100 px-1 rounded font-semibold">{t("Agent 接入为独立协作者")}</span>{t("， 通过现有协同编辑通道同步代码修改，支持")}<span className="bg-indigo-100 px-1 rounded font-semibold">{t("人与 Agent 实时协作")}</span>{isEnglish ? "." : "。"}</div>
                       </li>
                     </ul>
                   </div>
@@ -845,7 +755,7 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
 
                 <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 border border-emerald-200">
                   <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <h3 className="font-bold text-lg text-gray-800">归宿——民宿预订系统</h3>
+                    <h3 className="font-bold text-lg text-gray-800">{t("归宿——民宿预订系统")}</h3>
                     <Badge variant="outline" className="border-emerald-300 text-emerald-700">
                       Spring Cloud
                     </Badge>
@@ -860,43 +770,28 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                     </Badge>
                   </div>
                   <p className="text-sm text-gray-600 mb-4">
-                    <strong>项目描述</strong>：基于 Vue.js 和 Spring Cloud
-                    开发的前后端分离民宿预订平台，覆盖从下单到支付等一系列功能
-                  </p>
+                    <strong>{t("项目描述")}</strong>{t("：基于 Vue.js 和 Spring Cloud 开发的前后端分离民宿预订平台，覆盖从下单到支付等一系列功能")}</p>
                   <div>
-                    <p className="text-sm font-semibold mb-3 text-gray-800">架构设计与优化：</p>
+                    <p className="text-sm font-semibold mb-3 text-gray-800">{t("架构设计与优化：")}</p>
                     <ul className="space-y-2 text-sm text-gray-700">
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          基于 <span className="bg-emerald-100 px-1 rounded font-semibold">Spring Cloud</span>{" "}
-                          开发微服务，并在多台服务器上部署实例，以提升系统并发能力和可用性；
-                        </div>
+                        <div>{t("基于")}<span className="bg-emerald-100 px-1 rounded font-semibold">Spring Cloud</span>{" "}{t("开发微服务，并在多台服务器上部署实例，以提升系统并发能力和可用性；")}</div>
                       </li>
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          基于 <span className="bg-emerald-100 px-1 rounded font-semibold">Spring Cloud Gateway</span>
-                          ，集成 <span className="bg-emerald-100 px-1 rounded font-semibold">SaToken</span> 实现支持{" "}
-                          <span className="bg-emerald-100 px-1 rounded font-semibold">RBAC权限模型</span>{" "}
-                          的微服务统一鉴权，通过{" "}
-                          <span className="bg-emerald-100 px-1 rounded font-semibold">RedisLimitRater</span>（
-                          <span className="bg-emerald-100 px-1 rounded font-semibold">令牌桶算法</span>
-                          ）实现分布式限流；
-                        </div>
+                        <div>{t("基于")}<span className="bg-emerald-100 px-1 rounded font-semibold">Spring Cloud Gateway</span>{t("，集成")}<span className="bg-emerald-100 px-1 rounded font-semibold">SaToken</span>{t("实现支持")}{" "}
+                          <span className="bg-emerald-100 px-1 rounded font-semibold">{t("RBAC权限模型")}</span>{" "}{t("的微服务统一鉴权，通过")}{" "}
+                          <span className="bg-emerald-100 px-1 rounded font-semibold">RedisLimitRater</span>{isEnglish ? " (" : "（"}<span className="bg-emerald-100 px-1 rounded font-semibold">{t("令牌桶算法")}</span>{t("）实现分布式限流；")}</div>
                       </li>
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>
-                          使用 <span className="bg-emerald-100 px-1 rounded font-semibold">Redis</span>{" "}
-                          缓存高频查询，优化查询性能；结合{" "}
-                          <span className="bg-emerald-100 px-1 rounded font-semibold">Redisson</span>{" "}
-                          实现分布式锁及超时订单的延迟删除；
-                        </div>
+                        <div>{t("使用")}<span className="bg-emerald-100 px-1 rounded font-semibold">Redis</span>{" "}{t("缓存高频查询，优化查询性能；结合")}{" "}
+                          <span className="bg-emerald-100 px-1 rounded font-semibold">Redisson</span>{" "}{t("实现分布式锁及超时订单的延迟删除；")}</div>
                       </li>
                       <li className="flex gap-3">
                         <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-                        <div>集成高德地图、支付宝沙盒环境、身份证 OCR等外部 API，实现地图展示、逆地理编码等功能。</div>
+                        <div>{t("集成高德地图、支付宝沙盒环境、身份证 OCR等外部 API，实现地图展示、逆地理编码等功能。")}</div>
                       </li>
                     </ul>
                   </div>
@@ -908,32 +803,27 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
             <Card id="research" className="scroll-mt-24 xl:scroll-mt-8 shadow-lg border-0 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
               <CardHeader className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white">
                 <CardTitle className="flex items-center gap-2 text-xl">
-                  <Award className="w-6 h-6" />
-                  科研成果
-                </CardTitle>
+                  <Award className="w-6 h-6" />{t("科研成果")}</CardTitle>
               </CardHeader>
               <CardContent className="p-6 space-y-6">
                 <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-6 border border-yellow-200">
                   <h4 className="font-bold mb-4 text-yellow-800 flex items-center gap-2">
-                    <Award className="w-5 h-5" />
-                    论文发表
-                  </h4>
+                    <Award className="w-5 h-5" />{t("论文发表")}</h4>
                   <div className="space-y-4">
                     <div className="bg-white rounded-lg p-4 border border-yellow-200">
                       <p className="font-semibold text-gray-800 mb-2">
                         A Novel Request-Invitation-Approval Scheme for Flexible Semantic Conflict Prevention in
                         Real-Time Collaborative Programming
                       </p>
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
                         <Badge className="bg-yellow-100 text-yellow-800">CSCWD 2024</Badge>
-                        <Badge variant="outline">IEEE国际学术会议</Badge>
+                        <Badge variant="outline">{t("IEEE国际学术会议")}</Badge>
                         <a
                           href="https://ieeexplore.ieee.org/abstract/document/10580253"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-600 hover:underline flex items-center gap-1 text-sm"
-                        >
-                          查看论文 <ExternalLink className="w-3 h-3" />
+                        >{t("查看论文")}<ExternalLink className="w-3 h-3" />
                         </a>
                       </div>
 
@@ -943,16 +833,15 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
                         Annotation-based Semantic Conflict Prevention in Real-time Collaborative Programming: Approach,
                         Techniques, Prototype, and User Study
                       </p>
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
                         <Badge className="bg-yellow-100 text-yellow-800">IEEE SMC 2024</Badge>
-                        <Badge variant="outline">CCF推荐国际学术会议</Badge>
+                        <Badge variant="outline">{t("CCF推荐国际学术会议")}</Badge>
                         <a
                           href="https://ieeexplore.ieee.org/abstract/document/10831572"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-600 hover:underline flex items-center gap-1 text-sm"
-                        >
-                          查看论文 <ExternalLink className="w-3 h-3" />
+                        >{t("查看论文")}<ExternalLink className="w-3 h-3" />
                         </a>
                       </div>
 
@@ -962,16 +851,10 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
 
                 <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
                   <h4 className="font-bold mb-3 text-purple-800 flex items-center gap-2">
-                    <Award className="w-5 h-5" />
-                    发明专利
-                  </h4>
+                    <Award className="w-5 h-5" />{t("发明专利")}</h4>
                   <div className="bg-white rounded-lg p-4 border border-purple-200">
-                    <p className="font-semibold text-gray-800 mb-2">
-                      一种语义冲突预防方法
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      针对实时协同编程中语义冲突问题，采用申请-审批等机制平衡实时协同编程自由度和冲突预防之间的关系。
-                    </p>
+                    <p className="font-semibold text-gray-800 mb-2">{t("一种语义冲突预防方法")}</p>
+                    <p className="text-sm text-gray-600">{t("针对实时协同编程中语义冲突问题，采用申请-审批等机制平衡实时协同编程自由度和冲突预防之间的关系。")}</p>
                   </div>
                 </div>
               </CardContent>
@@ -1210,7 +1093,7 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
         href="/resume/汪明杰-软件开发.pdf"
         download
         className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-full shadow-xl backdrop-blur-sm transition-all duration-300 group hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/25"
-        aria-label="下载简历 PDF"
+        aria-label={isEnglish ? "Download resume PDF (Chinese)" : "下载简历 PDF"}
       >
         {/* 图标：下载箭头 - 旋转动画 */}
         <svg
@@ -1230,9 +1113,7 @@ Java、Go、Spring、MySQL、Redis、Docker、Linux、分布式系统、微服�
         </svg>
 
         {/* 鼠标悬停时显示的提示文字 */}
-        <span className="absolute right-full mr-4 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap transform translate-x-2 group-hover:translate-x-0 shadow-lg">
-          下载 PDF 简历
-          <div className="absolute top-1/2 -right-1 w-2 h-2 bg-gray-900 transform rotate-45 -translate-y-1/2"></div>
+        <span className="absolute right-full mr-4 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap transform translate-x-2 group-hover:translate-x-0 shadow-lg">{isEnglish ? "Download PDF (Chinese)" : "下载 PDF 简历"}<div className="absolute top-1/2 -right-1 w-2 h-2 bg-gray-900 transform rotate-45 -translate-y-1/2"></div>
         </span>
 
         {/* 悬停时的涟漪效果 */}

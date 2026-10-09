@@ -10,7 +10,9 @@ const sections = [
   { id: "research", label: "科研成果" },
 ]
 
-export function SectionNavigation() {
+export function SectionNavigation({ locale = "zh" }: { locale?: "zh" | "en" }) {
+  const englishLabels: Record<string, string> = { work: "Work", internships: "Internships", activities: "Leadership", projects: "Projects", research: "Research" }
+  const isEnglish = locale === "en"
   const [activeSection, setActiveSection] = useState("work")
   const [progress, setProgress] = useState(0)
 
@@ -41,12 +43,12 @@ export function SectionNavigation() {
 
   return (
     <nav
-      aria-label="简历章节导航"
+      aria-label={isEnglish ? "Resume sections" : "简历章节导航"}
       className="sticky top-0 z-50 border-b border-white/80 bg-white/90 px-2 py-2 shadow-sm backdrop-blur-xl xl:fixed xl:right-3 xl:top-1/2 xl:w-28 xl:-translate-y-1/2 xl:rounded-3xl xl:border xl:bg-white/80 xl:px-2 xl:py-4 xl:shadow-[0_8px_32px_rgba(30,64,175,0.10)]"
     >
       <div className="mb-3 hidden items-center justify-between px-1 text-[10px] xl:flex">
-        <span className="font-medium tracking-wider text-slate-500">阅读导航</span>
-        <span className="font-mono text-blue-500">{String(sections.findIndex(({ id }) => id === activeSection) + 1).padStart(2, "0")} / 05</span>
+        <span className="font-medium text-[9px] tracking-wide text-slate-500">{isEnglish ? "CONTENTS" : "阅读导航"}</span>
+        <span className="whitespace-nowrap font-mono text-blue-500">{String(sections.findIndex(({ id }) => id === activeSection) + 1).padStart(2, "0")} / 05</span>
       </div>
       <div className="relative">
         <div aria-hidden="true" className="absolute bottom-5 left-[15px] top-5 hidden w-px bg-blue-100 xl:block">
@@ -65,12 +67,12 @@ export function SectionNavigation() {
                     block: "start",
                   })
                 }}
-                className={`flex items-center gap-1.5 rounded-xl px-2 py-2.5 text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 xl:px-1.5 ${activeSection === id ? "bg-gradient-to-r from-blue-100 to-indigo-50 font-bold text-blue-700 shadow-sm ring-1 ring-blue-200/60" : "text-slate-500 hover:bg-white hover:text-blue-700"}`}
+                className={`flex items-center gap-1.5 rounded-xl px-1.5 py-2.5 text-[11px] sm:text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 xl:px-1.5 ${activeSection === id ? "bg-gradient-to-r from-blue-100 to-indigo-50 font-bold text-blue-700 shadow-sm ring-1 ring-blue-200/60" : "text-slate-500 hover:bg-white hover:text-blue-700"}`}
               >
                 <span aria-hidden="true" className={`relative hidden h-5 w-5 shrink-0 items-center justify-center rounded-full font-mono text-[9px] xl:flex ${activeSection === id ? "bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-sm shadow-blue-300" : "border border-blue-100 bg-white text-slate-400"}`}>
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                {label}
+                {isEnglish ? englishLabels[id] : label}
               </a>
             </li>
           ))}

@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh-CN" suppressHydrationWarning>
       <head>
       <link rel="icon" href="/resume/favicon.ico" type="image/x-icon" />
       <link rel="shortcut icon" href="/resume/favicon.ico" type="image/x-icon" />
