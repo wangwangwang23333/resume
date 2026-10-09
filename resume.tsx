@@ -116,7 +116,7 @@ export default function Resume() {
                     />
                   </div>
                   <h1 className="text-2xl font-bold mb-2">汪明杰</h1>
-                  <p className="text-blue-100 text-lg mb-4">后台开发工程师</p>
+                  <p className="text-blue-100 text-lg mb-4">个人简历</p>
                   <div className="flex items-center justify-center gap-2 text-sm text-blue-100 mb-6">
                     <MapPin className="w-4 h-4" />
                     <span>男 / 2000.12</span>
@@ -340,7 +340,7 @@ export default function Resume() {
                 {/* 复制按钮 */}
                 <button
                   onClick={async () => {
-                    const resumeText = `汪明杰 - 后台开发工程师
+                    const resumeText = `汪明杰 - 个人简历
 邮箱：montywang1226@163.com
 电话：19121765585
 
